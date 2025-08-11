@@ -2366,7 +2366,9 @@ import { motion } from "framer-motion";
 
 //https://magicscale-production.up.railway.app/   //https://magicscale-production-42d7.up.railway.app/    //https://magicscale-production.up.railway.app
 //const API_BASE = import.meta.env.VITE_BACKEND_URL || "https://magicscale-backend.onrender.com";
-const API_BASE = import.meta.env.VITE_BACKEND_URL || "resilient-blessing-production.up.railway.app";
+// const API_BASE = import.meta.env.VITE_BACKEND_URL || "resilient-blessing-production.up.railway.app";
+const API_BASE = import.meta.env.VITE_BACKEND_URL || "https://resilient-blessing-production.up.railway.app";
+
 
 const discountMap = { 1: 10, 3: 25, 6: 30, 12: 40 };
 const validCoupons = {

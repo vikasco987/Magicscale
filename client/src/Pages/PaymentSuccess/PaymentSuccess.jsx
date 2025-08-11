@@ -93,7 +93,7 @@ const PaymentSuccess = () => {
     //   body: JSON.stringify({ order_id, userId, plan, duration, amount, email, name }),
     // })
 
-        fetch("https://magicscale-production.up.railway.app/api/cashfree/confirm-payment", {
+        fetch("https://magicscale-resilient-blessing-production.up.railway.app/api/cashfree/confirm-payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ order_id, userId, plan, duration, amount, email, name }),
