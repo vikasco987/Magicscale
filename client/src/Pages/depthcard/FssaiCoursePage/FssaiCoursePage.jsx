@@ -1458,14 +1458,6 @@
 
 
 
-
-
-
-
-
-
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import fssaiImg from '../../../assets/fssai.png';
@@ -1480,183 +1472,200 @@ import SiteFooter from './SiteFooter';
 const Govt = 1000;
 
 const plans = [
-  { slug: 'fssai-registration-1yr', label: 'FSSAI Registration - 1 Year', price: 1500, features: ['Basic Application', 'Filing Support', '1 Year License'] },
-  { slug: 'fssai-registration-3yrs', label: 'FSSAI Registration - 3 Years', price: 2000, features: ['Basic Application', 'Filing Support', '3 Year License'] },
-  { slug: 'fssai-registration-5yrs', label: 'FSSAI Registration - 5 Years', price: 2500, features: ['Basic Application', 'Filing Support', '5 Year License'] },
-  { slug: 'fssai-state-license', label: 'FSSAI State License - 1-5 Year', price: (3999 + Govt), features: ['Application Prep', 'State License - 1-5 Year'] },
-  { slug: 'fssai-tatkal-license', label: 'FSSAI Tatkal License - 1 Years', price: 999, features: ['Basic Application', 'Filing Support', '1 Year License'] },
-  { slug: 'fssai-central-license', label: 'FSSAI Central License - 1 Year', price: 1999, features: ['Central Filing', '1 Year License'] },
+  { slug: 'fssai-registration-1yr', label: 'FSSAI Registration - 1 Year', price: 1500, features: ['Basic Application', 'Filing Support', '1 Year License'] },
+  { slug: 'fssai-registration-3yrs', label: 'FSSAI Registration - 3 Years', price: 2000, features: ['Basic Application', 'Filing Support', '3 Year License'] },
+  { slug: 'fssai-registration-5yrs', label: 'FSSAI Registration - 5 Years', price: 2500, features: ['Basic Application', 'Filing Support', '5 Year License'] },
+  { slug: 'fssai-state-license', label: 'FSSAI State License - 1-5 Year', price: (3999 + Govt), features: ['Application Prep', 'State License - 1-5 Year'] },
+  { slug: 'fssai-tatkal-license', label: 'FSSAI Tatkal License - 1 Years', price: 999, features: ['Basic Application', 'Filing Support', '1 Year License'] },
+  { slug: 'fssai-central-license', label: 'FSSAI Central License - 1 Year', price: 1999, features: ['Central Filing', '1 Year License'] },
 ];
 
 const FssaiLicenseCourse = () => {
-  const navigate = useNavigate();
-  const [selectedPlan, setSelectedPlan] = useState(plans[0]);
-  const [quantity, setQuantity] = useState(1);
-  const totalPrice = selectedPlan.price * quantity;
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const navigate = useNavigate();
+  const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+  const [quantity, setQuantity] = useState(1);
+  const totalPrice = selectedPlan.price * quantity;
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const mainContentRef = useRef(null);
-  const checkoutRef = useRef(null);
+  const checkoutRef = useRef(null);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', isDarkMode);
-  }, [isDarkMode]);
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+    }
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
 
-  useEffect(() => {
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    setIsDarkMode(savedDarkMode);
-  }, []);
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    setIsDarkMode(savedDarkMode);
+  }, []);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
-  const goToCheckout = () => {
-    navigate(`/checkout/${selectedPlan.slug}`);
-  };
+  const goToCheckout = () => {
+    // Navigate to checkout, potentially passing the selected plan slug and quantity
+    navigate(`/checkout/${selectedPlan.slug}?qty=${quantity}`);
+  };
 
-  const renderCheckoutCard = (isMobile = false) => (
-    <div
-      ref={isMobile ? null : checkoutRef}
-      className={`rounded-xl shadow-lg p-5 w-full max-w-sm ${isMobile ? 'mx-auto' : ''} ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
-    >
-      <img src={fssaiImg} alt="FSSAI License" className="rounded-md mb-4 w-full object-cover h-40" />
-      <h2 className="text-2xl font-bold mb-1">Rs.{totalPrice}</h2>
-      <p className={`text-sm mb-3 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{selectedPlan.label}</p>
+  const renderCheckoutCard = (isMobile = false) => (
+    <div
+      ref={isMobile ? null : checkoutRef}
+      className={`rounded-xl shadow-lg p-5 w-full max-w-sm ${isMobile ? 'mx-auto' : ''} ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
+    >
+      <img src={fssaiImg} alt="FSSAI License" className="rounded-md mb-4 w-full object-cover h-40" />
+      
+      {/* Price Display with GST Mention (Checkout Card) */}
+      <div className="flex justify-between items-end mb-1">
+        <h2 className="text-2xl font-bold">Rs.{totalPrice.toLocaleString()}</h2>
+        <span className="text-sm text-red-600 font-semibold">+ 18% GST</span>
+      </div>
 
-      <div className="mb-4">
-        <select
-          value={selectedPlan.label}
-          onChange={(e) => {
-            const selected = plans.find((p) => p.label === e.target.value);
-            setSelectedPlan(selected);
-          }}
-          className={`w-full border rounded-md px-3 py-2 text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-white border-gray-300 text-gray-900'}`}
-        >
-          {plans.map((plan) => (
-            <option key={plan.label} value={plan.label}>{plan.label}</option>
-          ))}
-        </select>
-      </div>
+      <p className={`text-sm mb-3 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{selectedPlan.label}</p>
 
-      <button onClick={goToCheckout} className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Go to Cart</button>
-      <button onClick={goToCheckout} className={`w-full border mt-2 py-2 rounded-lg ${isDarkMode ? 'border-green-500 text-green-400 hover:bg-green-900' : 'border-green-600 text-green-700 hover:bg-green-50'}`}>Buy Now</button>
+      <div className="mb-4">
+        <select
+          value={selectedPlan.label}
+          onChange={(e) => {
+            const selected = plans.find((p) => p.label === e.target.value);
+            setSelectedPlan(selected);
+          }}
+          className={`w-full border rounded-md px-3 py-2 text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-white border-gray-300 text-gray-900'}`}
+        >
+          {plans.map((plan) => (
+            <option key={plan.label} value={plan.label}>{plan.label}</option>
+          ))}
+        </select>
+      </div>
 
-      <p className={`text-xs text-center mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>30-Day Money-Back Guarantee</p>
+      <button onClick={goToCheckout} className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Go to Cart</button>
+      <button onClick={goToCheckout} className={`w-full border mt-2 py-2 rounded-lg ${isDarkMode ? 'border-green-500 text-green-400 hover:bg-green-900' : 'border-green-600 text-green-700 hover:bg-green-50'}`}>Buy Now</button>
 
-      <ul className={`text-sm mt-5 space-y-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-        {selectedPlan.features.map((feat, idx) => (<li key={idx}>* {feat}</li>))}
-      </ul>
+      <p className={`text-xs text-center mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>30-Day Money-Back Guarantee</p>
 
-      <div className="mt-6">
-        <label htmlFor="coupon-code" className={`text-sm font-medium block mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Apply Coupon</label>
-        <input id="coupon-code" type="text" placeholder="Enter coupon code" className={`w-full border px-3 py-2 rounded text-sm mb-2 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400' : 'border-gray-300 text-gray-900'}`} />
-        <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md text-sm font-semibold">Apply Coupon</button>
-      </div>
-    </div>
-  );
+      <ul className={`text-sm mt-5 space-y-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+        {selectedPlan.features.map((feat, idx) => (<li key={idx}>* {feat}</li>))}
+      </ul>
 
-  return (
-    <div className={`min-h-screen pb-40 relative font-[Poppins] ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-green-50 text-gray-900'}`}>
-      <div className="fixed top-4 right-4 z-50">
-        <button onClick={toggleDarkMode} className={`p-3 rounded-full shadow-lg ${isDarkMode ? 'bg-gray-700 text-yellow-300' : 'bg-white text-gray-800'}`} aria-label="Toggle dark mode">
-          {isDarkMode ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
-        </button>
-      </div>
+      <div className="mt-6">
+        <label htmlFor="coupon-code" className={`text-sm font-medium block mb-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Apply Coupon</label>
+        <input id="coupon-code" type="text" placeholder="Enter coupon code" className={`w-full border px-3 py-2 rounded text-sm mb-2 ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100 placeholder-gray-400' : 'border-gray-300 text-gray-900'}`} />
+        <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md text-sm font-semibold">Apply Coupon</button>
+      </div>
+    </div>
+  );
 
-      <div className="w-full h-[300px] sm:h-[400px] md:h-[480px] overflow-hidden mb-6">
-        <img src={bannerImg} alt="Banner" className="w-full h-full object-cover object-center" />
-      </div>
+  return (
+    <div className={`min-h-screen pb-40 relative font-[Poppins] ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-green-50 text-gray-900'}`}>
+      <div className="fixed top-4 right-4 z-50">
+        <button onClick={toggleDarkMode} className={`p-3 rounded-full shadow-lg ${isDarkMode ? 'bg-gray-700 text-yellow-300' : 'bg-white text-gray-800'}`} aria-label="Toggle dark mode">
+          {isDarkMode ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
+        </button>
+      </div>
 
-      <div ref={mainContentRef} className="px-4 sm:px-6 md:px-16">
-        <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10">
-          <div className="w-full md:w-[66%] space-y-6 md:pr-8">
-            <div className="flex items-center gap-3 mb-2">
-              <img src={categoryIcon} alt="Category Icon" className="w-10 h-10 object-contain" />
-              <p className={`text-sm ${isDarkMode ? 'text-green-400' : 'text-green-700'}`}>Legal Services {'>'} FSSAI License</p>
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">Get Your FSSAI License with Expert Guidance</h1>
-            <p className={`text-base sm:text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Whether you're a home kitchen, café, cloud kitchen, or multi-outlet restaurant, we’ll help you apply, submit documents, and get your FSSAI Basic, State, or Central license smoothly.</p>
+      <div className="w-full h-[300px] sm:h-[400px] md:h-[480px] overflow-hidden mb-6">
+        <img src={bannerImg} alt="Banner" className="w-full h-full object-cover object-center" />
+      </div>
 
-            <div className={`flex flex-col md:flex-row border rounded-lg shadow p-4 gap-6 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white'}`}>
-              <div className="md:w-1/2 space-y-3">
-                <label htmlFor="main-plan-select" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Select License Plan</label>
-                <select
-                  id="main-plan-select"
-                  value={selectedPlan.label}
-                  onChange={(e) => {
-                    const selected = plans.find((p) => p.label === e.target.value);
-                    setSelectedPlan(selected);
-                  }}
-                  className={`w-full border rounded px-3 py-2 text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-white border-gray-300 text-gray-900'}`}
-                >
-                  {plans.map((plan) => (
-                    <option key={plan.label} value={plan.label}>{plan.label}</option>
-                  ))}
-                </select>
-                <div className="flex items-center gap-2">
-                  <label htmlFor="quantity-input" className={`text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Quantity:</label>
-                  <input id="quantity-input" type="number" value={quantity} min={1} onChange={(e) => setQuantity(Number(e.target.value))} className={`w-20 px-2 py-1 border rounded ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-white border-gray-300'}`} />
-                </div>
-                <div className={`rounded p-4 mt-4 ${isDarkMode ? 'bg-green-900 text-green-200' : 'bg-green-100'}`}>
-                  <h3 className={`font-semibold mb-2 ${isDarkMode ? 'text-green-100' : 'text-green-800'}`}>2 Exclusive Offers</h3>
-                  <ul className={`list-disc pl-4 text-sm ${isDarkMode ? 'text-green-300' : 'text-green-700'} space-y-1`}>
-                    {selectedPlan.features.map((feat, idx) => (<li key={idx}>* {feat}</li>))}
-                  </ul>
-                </div>
-              </div>
-              <div className="md:w-1/2">
-                <img src={categoryIcon} alt="FSSAI Visual" className="w-full h-auto rounded-md" />
-              </div>
-            </div>
+      <div ref={mainContentRef} className="px-4 sm:px-6 md:px-16">
+        <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10">
+          <div className="w-full md:w-[66%] space-y-6 md:pr-8">
+            <div className="flex items-center gap-3 mb-2">
+              <img src={categoryIcon} alt="Category Icon" className="w-10 h-10 object-contain" />
+              <p className={`text-sm ${isDarkMode ? 'text-green-400' : 'text-green-700'}`}>Legal Services {'>'} FSSAI License</p>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">Get Your FSSAI License with Expert Guidance</h1>
+            <p className={`text-base sm:text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Whether you're a home kitchen, café, cloud kitchen, or multi-outlet restaurant, we’ll help you apply, submit documents, and get your FSSAI Basic, State, or Central license smoothly.</p>
 
-            <div className="mt-8 md:hidden">{renderCheckoutCard(true)}</div>
-            <FssaiWhatYouGet isDarkMode={isDarkMode} />
-            <FssaiEligibility isDarkMode={isDarkMode} />
-            <h3 className="text-2xl font-semibold mb-6 mt-10">Why Choose Us?</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[{
-                icon: <FaTv className="mx-auto text-3xl mb-3 text-green-600" />, title: "Online Filing & Tracking", desc: "Get real-time updates and license status from our dashboard."
-              }, {
-                icon: <FaDownload className="mx-auto text-3xl mb-3 text-pink-500" />, title: "All Docs Managed", desc: "We handle your forms, photos, ID proofs, and declarations."
-              }, {
-                icon: <FaSatelliteDish className="mx-auto text-3xl mb-3 text-red-500" />, title: "PAN India Service", desc: "Apply from anywhere — all states & cities covered."
-              }, {
-                icon: <FaSmile className="mx-auto text-3xl mb-3 text-pink-400" />, title: "Quick & Hassle-Free", desc: "End-to-end support for new, renew, and modification cases."
-              }].map((item, idx) => (
-                <div key={idx} className={`rounded-xl p-5 text-center shadow ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}>
-                  {item.icon}
-                  <h4 className="text-lg font-bold mb-1">{item.title}</h4>
-                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-            <FssaiFAQ isDarkMode={isDarkMode} />
-          </div>
-          <div className="hidden md:block md:w-[34%] relative">
-            <div className="md:sticky md:top-6">{renderCheckoutCard()}</div>
-          </div>
-        </div>
-      </div>
+            <div className={`flex flex-col md:flex-row border rounded-lg shadow p-4 gap-6 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white'}`}>
+              <div className="md:w-1/2 space-y-3">
+                <label htmlFor="main-plan-select" className={`block text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Select License Plan</label>
+                <select
+                  id="main-plan-select"
+                  value={selectedPlan.label}
+                  onChange={(e) => {
+                    const selected = plans.find((p) => p.label === e.target.value);
+                    setSelectedPlan(selected);
+                  }}
+                  className={`w-full border rounded px-3 py-2 text-sm ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-white border-gray-300 text-gray-900'}`}
+                >
+                  {plans.map((plan) => (
+                    <option key={plan.label} value={plan.label}>{plan.label}</option>
+                  ))}
+                </select>
+                <div className="flex items-center gap-2">
+                  <label htmlFor="quantity-input" className={`text-sm font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Quantity:</label>
+                  <input id="quantity-input" type="number" value={quantity} min={1} onChange={(e) => setQuantity(Number(e.target.value))} className={`w-20 px-2 py-1 border rounded ${isDarkMode ? 'bg-gray-700 border-gray-600 text-gray-100' : 'bg-white border-gray-300'}`} />
+                </div>
 
-      <SiteFooter isDarkMode={isDarkMode} />
+                {/* Main Price Display with GST Mention */}
+                <div className={`rounded p-4 mt-4 ${isDarkMode ? 'bg-green-900 text-green-200' : 'bg-green-100'}`}>
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className={`text-xl font-bold ${isDarkMode ? 'text-green-100' : 'text-green-800'}`}>Total Price: Rs.{totalPrice.toLocaleString()}</h3>
+                    <span className="text-sm text-red-600 font-semibold">+ 18% GST</span>
+                  </div>
+                  
+                  <h3 className={`font-semibold mb-2 ${isDarkMode ? 'text-green-100' : 'text-green-800'}`}>What's Included?</h3>
+                  <ul className={`list-disc pl-4 text-sm ${isDarkMode ? 'text-green-300' : 'text-green-700'} space-y-1`}>
+                    {selectedPlan.features.map((feat, idx) => (<li key={idx}>{feat}</li>))}
+                  </ul>
+                </div>
+              </div>
+              <div className="md:w-1/2">
+                <img src={categoryIcon} alt="FSSAI Visual" className="w-full h-auto rounded-md" />
+              </div>
+            </div>
 
-      <div className={`fixed md:hidden bottom-0 left-0 right-0 shadow-inner px-4 py-3 z-50 border-t flex items-center justify-between ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-100' : 'bg-white'}`}>
-        <div>
-          <h4 className="text-lg font-semibold">Rs.{totalPrice}</h4>
-          <p className={`text-xs truncate max-w-[180px] ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{selectedPlan.label}</p>
-        </div>
-        <button onClick={goToCheckout} className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">Continue</button>
-      </div>
-    </div>
-  );
+            <div className="mt-8 md:hidden">{renderCheckoutCard(true)}</div>
+            <FssaiWhatYouGet isDarkMode={isDarkMode} />
+            <FssaiEligibility isDarkMode={isDarkMode} />
+            <h3 className="text-2xl font-semibold mb-6 mt-10">Why Choose Us?</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[{
+                icon: <FaTv className="mx-auto text-3xl mb-3 text-green-600" />, title: "Online Filing & Tracking", desc: "Get real-time updates and license status from our dashboard."
+              }, {
+                icon: <FaDownload className="mx-auto text-3xl mb-3 text-pink-500" />, title: "All Docs Managed", desc: "We handle your forms, photos, ID proofs, and declarations."
+              }, {
+                icon: <FaSatelliteDish className="mx-auto text-3xl mb-3 text-red-500" />, title: "PAN India Service", desc: "Apply from anywhere — all states & cities covered."
+              }, {
+                icon: <FaSmile className="mx-auto text-3xl mb-3 text-pink-400" />, title: "Quick & Hassle-Free", desc: "End-to-end support for new, renew, and modification cases."
+              }].map((item, idx) => (
+                <div key={idx} className={`rounded-xl p-5 text-center shadow ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}>
+                  {item.icon}
+                  <h4 className="text-lg font-bold mb-1">{item.title}</h4>
+                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <FssaiFAQ isDarkMode={isDarkMode} />
+          </div>
+          <div className="hidden md:block md:w-[34%] relative">
+            <div className="md:sticky md:top-6">{renderCheckoutCard()}</div>
+          </div>
+        </div>
+      </div>
+
+      <SiteFooter isDarkMode={isDarkMode} />
+
+      {/* Floating Bottom Bar CTA for Mobile */}
+      <div className={`fixed md:hidden bottom-0 left-0 right-0 shadow-inner px-4 py-3 z-50 border-t flex items-center justify-between ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-100' : 'bg-white'}`}>
+        <div className='flex flex-col'>
+          <h4 className="text-lg font-semibold">Rs.{totalPrice.toLocaleString()}</h4>
+          {/* **GST Mention added to Mobile Floating Bar** */}
+          <p className="text-xs text-red-600 font-semibold">
+            + 18% GST
+          </p>
+        </div>
+        <button onClick={goToCheckout} className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">Continue</button>
+      </div>
+    </div>
+  );
 };
 
 export default FssaiLicenseCourse;

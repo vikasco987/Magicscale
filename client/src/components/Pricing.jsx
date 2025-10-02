@@ -345,7 +345,6 @@
 
 
 
-
 import React, { useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -433,9 +432,14 @@ const Pricing = () => {
               <h3 className="text-2xl font-bold text-purple-700 mb-1">
                 {planType} Plan
               </h3>
-              <p className="text-3xl font-extrabold text-purple-900 mb-4">
+              <p className="text-3xl font-extrabold text-purple-900 mb-1">
                 ₹{prices[planKey].toLocaleString()} <span className="text-sm text-gray-500 font-medium"> /month</span>
               </p>
+              {/* UPDATED: 18% GST Mention */}
+              <p className="text-xs text-red-500 font-semibold mb-4">
+                + 18% GST
+              </p>
+              {/* END UPDATED */}
 
               <div className="mb-4">
                 <label className="block font-medium text-sm text-gray-700 mb-2">
@@ -456,8 +460,11 @@ const Pricing = () => {
                     </button>
                   ))}
                 </div>
-                <p className="mt-3 text-lg text-purple-700 font-semibold">
-                  Total: ₹{(prices[planKey] * duration).toLocaleString("en-IN")}
+                <p className="mt-3 text-lg text-purple-700 font-semibold flex justify-between items-center">
+                  <span>Total: ₹{(prices[planKey] * duration).toLocaleString("en-IN")}</span>
+                  {/* UPDATED: 18% GST Mention next to total */}
+                  <span className="text-xs text-red-500 font-medium"> + 18% GST</span>
+                  {/* END UPDATED */}
                 </p>
               </div>
 
