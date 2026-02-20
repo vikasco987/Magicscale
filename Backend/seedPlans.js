@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Plan from "./models/Plan.js"; // ✅ Adjust this path if your model is elsewhere
 
-dotenv.config();
+dotenv.config();.
 
 const plansToSeed = [
   // 🌱 General Growth Plans
