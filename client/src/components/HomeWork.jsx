@@ -154,18 +154,7 @@ import fssaiImg from "../assets/fssai.png";
 import comboImg from "../assets/combo.png"; // ✅ ADD THIS
 
 const services = [
-  {
-    title: "Zomato Setup",
-    icon: <FaUtensils size={24} />,
-    image: zomatoImg,
-    path: "/course/zomato-onboarding",
-  },
-  {
-    title: "Swiggy Setup",
-    icon: <FaMotorcycle size={24} />,
-    image: swiggyImg,
-    path: "/course/swiggy-onboarding",
-  },
+
   {
     title: "FSSAI License",
     icon: <FaCertificate size={24} />,
@@ -177,6 +166,19 @@ const services = [
     icon: <FaLayerGroup size={24} />,
     image: comboImg,
     path: "/course/combo-onboarding", // ✅ Make sure route exists
+  },
+
+    {
+    title: "Zomato Setup",
+    icon: <FaUtensils size={24} />,
+    image: zomatoImg,
+    path: "/course/zomato-onboarding",
+  },
+  {
+    title: "Swiggy Setup",
+    icon: <FaMotorcycle size={24} />,
+    image: swiggyImg,
+    path: "/course/swiggy-onboarding",
   },
 ];
 
