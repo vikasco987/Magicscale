@@ -76,7 +76,7 @@ const LeadPopup = () => {
             Send it
           </button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };
