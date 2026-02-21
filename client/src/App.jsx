@@ -29,6 +29,7 @@ import ResetPassword from './components/Login/ResetPassword/ResetPassword';
 import Signup from './components/Signup/Signup';
 import VerifyOtp from "./components/Signup/VerifyOTP";
 import ProtectedRoute from './components/ProtectedRoute';
+import FloatingCartButton from "./components/FloatingCartButton";
 import PhoneOTPLogin from './components/PhoneOTPLogin';
 import ZomatoCoursePage from './Pages/depthcard/CoursePage/ZomatoCoursePage';
 import ComboCoursePage from './Pages/depthcard/ComboPage/ComboCoursePage';
@@ -39,6 +40,7 @@ import SwiggyOnboardingCourse from "./Pages/depthcard/SwiggyCoursePage/SwiggyCou
 import FssaiLicenseCourse from "./Pages/depthcard/FssaiCoursePage/FssaiCoursePage";
 import Logout from "./Pages/Logout";
 import Subscriptions from './Pages/UserDashboard/Subscriptions';
+import CartPage from "./Pages/CartPage";
 
 // ✅ Import TaskBoard component
 import TaskBoard from './components/SellerDashboard/Board';
@@ -51,6 +53,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home-work" element={<HomeWork />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/course/zomato-onboarding" element={<ZomatoCoursePage />} />
         <Route path="/course/combo-onboarding" element={<ComboCoursePage />} />
@@ -111,6 +114,7 @@ function App() {
           }
         />
       </Routes>
+      <FloatingCartButton />
     </div>
   );
 }

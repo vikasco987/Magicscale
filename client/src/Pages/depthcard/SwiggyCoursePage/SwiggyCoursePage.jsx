@@ -834,6 +834,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addToCart } from "../../../utils/cartUtils";
 import swiggyImg from '../../../assets/zomato3.png'; // Consider replacing with a more generic or Swiggy-specific image if available
 import { FaTv, FaDownload, FaSatelliteDish, FaSmile, FaCheckCircle, FaTag } from 'react-icons/fa';
 import SwiggyFAQ from './SwiggyFAQ';
@@ -884,6 +885,7 @@ const SwiggyOnboardingCourse = () => {
   ];
 
   const [selectedPlan, setSelectedPlan] = useState('basic');
+  const [isAdded, setIsAdded] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
   const [appliedCouponInfo, setAppliedCouponInfo] = useState(null); // Stores info about the applied coupon
@@ -921,13 +923,24 @@ const SwiggyOnboardingCourse = () => {
   const handleCouponSelect = (coupon) => {
     setCouponCode(coupon.code);
     // Use setTimeout to ensure state update before apply function runs, though not strictly necessary with the current setup
-    handleCouponApply(); 
+    handleCouponApply();
   };
 
   const handleRemoveCoupon = () => {
     setCouponCode('');
     setDiscountApplied(false);
     setAppliedCouponInfo(null);
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: currentPlan.slug,
+      name: currentPlan.name,
+      price: finalPrice,
+      slug: currentPlan.slug,
+      quantity: 1,
+    });
+    setIsAdded(true);
   };
 
   const handleCheckout = () => {
@@ -991,6 +1004,7 @@ const SwiggyOnboardingCourse = () => {
                         key={key}
                         onClick={() => {
                           setSelectedPlan(key);
+                          setIsAdded(false);
                           setDiscountApplied(false);
                           setCouponCode('');
                           setAppliedCouponInfo(null);
@@ -1020,7 +1034,7 @@ const SwiggyOnboardingCourse = () => {
                   {/* **Mobile GST Mention** */}
                   <span className="text-sm text-red-600 font-medium">+ 18% GST</span>
                 </div>
-                
+
                 {discountApplied && appliedCouponInfo && (
                   <p className="text-green-600 text-sm mb-3">
                     {appliedCouponInfo.discount ? `You saved ${appliedCouponInfo.discount}%!` : `You saved ₹${appliedCouponInfo.flatDiscount}!`}-
@@ -1029,10 +1043,16 @@ const SwiggyOnboardingCourse = () => {
                 <p className="text-sm text-gray-600 mb-3">{currentPlan.tagline}</p>
 
                 <button
-                  onClick={handleCheckout}
-                  className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
+                  onClick={handleAddToCart}
+                  className={`w-full py-2 rounded-lg transition ${isAdded ? "bg-green-600 text-white" : "bg-orange-600 text-white hover:bg-orange-700"}`}
                 >
-                  Proceed to Checkout
+                  {isAdded ? "Added to Cart ✓" : "Go to Cart"}
+                </button>
+                <button
+                  onClick={handleCheckout}
+                  className="w-full border mt-2 py-2 rounded-lg bg-white text-orange-600 border-orange-600 hover:bg-orange-50 transition"
+                >
+                  Buy Now
                 </button>
 
                 <p className="text-xs text-gray-500 text-center mt-2">30-Day Money-Back Guarantee</p>
@@ -1061,11 +1081,10 @@ const SwiggyOnboardingCourse = () => {
                     <button
                       onClick={handleCouponApply}
                       disabled={discountApplied || couponCode.trim() === ''}
-                      className={`px-4 py-2 rounded-r text-sm font-semibold transition-colors ${
-                        discountApplied || couponCode.trim() === ''
-                          ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                          : 'bg-green-600 hover:bg-green-700 text-white'
-                      }`}
+                      className={`px-4 py-2 rounded-r text-sm font-semibold transition-colors ${discountApplied || couponCode.trim() === ''
+                        ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                        : 'bg-green-600 hover:bg-green-700 text-white'
+                        }`}
                     >
                       {discountApplied ? 'Applied' : 'Apply'}
                     </button>
@@ -1168,6 +1187,7 @@ const SwiggyOnboardingCourse = () => {
                         key={key}
                         onClick={() => {
                           setSelectedPlan(key);
+                          setIsAdded(false);
                           setDiscountApplied(false);
                           setCouponCode('');
                           setAppliedCouponInfo(null);
@@ -1206,10 +1226,16 @@ const SwiggyOnboardingCourse = () => {
                 <p className="text-sm text-gray-600 mb-3">{currentPlan.tagline}</p>
 
                 <button
-                  onClick={handleCheckout}
-                  className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
+                  onClick={handleAddToCart}
+                  className={`w-full py-2 rounded-lg transition ${isAdded ? "bg-green-600 text-white" : "bg-orange-600 text-white hover:bg-orange-700"}`}
                 >
-                  Proceed to Checkout
+                  {isAdded ? "Added to Cart ✓" : "Go to Cart"}
+                </button>
+                <button
+                  onClick={handleCheckout}
+                  className="w-full border mt-2 py-2 rounded-lg bg-white text-orange-600 border-orange-600 hover:bg-orange-50 transition"
+                >
+                  Buy Now
                 </button>
 
                 <p className="text-xs text-gray-500 text-center mt-2">30-Day Money-Back Guarantee</p>
@@ -1238,11 +1264,10 @@ const SwiggyOnboardingCourse = () => {
                     <button
                       onClick={handleCouponApply}
                       disabled={discountApplied || couponCode.trim() === ''}
-                      className={`px-4 py-2 rounded-r text-sm font-semibold transition-colors ${
-                        discountApplied || couponCode.trim() === ''
-                          ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                          : 'bg-green-600 hover:bg-green-700 text-white'
-                      }`}
+                      className={`px-4 py-2 rounded-r text-sm font-semibold transition-colors ${discountApplied || couponCode.trim() === ''
+                        ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                        : 'bg-green-600 hover:bg-green-700 text-white'
+                        }`}
                     >
                       {discountApplied ? 'Applied' : 'Apply'}
                     </button>
@@ -1309,12 +1334,23 @@ const SwiggyOnboardingCourse = () => {
           </h4>
           <p className="text-xs text-red-600 font-medium">+ 18% GST</p> {/* **Mobile Floating GST Mention** */}
         </div>
-        <button
-          onClick={handleCheckout}
-          className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm hover:bg-orange-700"
-        >
-          Continue
-        </button>
+        <div className="flex space-x-2">
+          <button
+            onClick={handleAddToCart}
+            className={`px-4 py-2 rounded-md text-sm transition ${isAdded
+              ? 'bg-green-700 text-white'
+              : 'bg-orange-600 text-white hover:bg-orange-700'
+              }`}
+          >
+            {isAdded ? "Added ✓" : "Go to Cart"}
+          </button>
+          <button
+            onClick={handleCheckout}
+            className="border border-orange-600 text-orange-600 px-4 py-2 rounded-md text-sm hover:bg-orange-50 transition"
+          >
+            Buy Now
+          </button>
+        </div>
       </div>
     </div>
   );
