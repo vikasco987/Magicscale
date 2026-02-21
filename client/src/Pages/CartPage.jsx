@@ -149,9 +149,9 @@ const CartPage = () => {
         </h1>
 
         {cart.length === 0 ? (
-          <div className="text-center bg-white p-16 rounded-2xl shadow-sm border border-gray-100">
+            <div className="text-center bg-white p-16 rounded-2xl shadow-sm border border-gray-100">
             <p className="text-xl text-gray-500 mb-6">Your cart feels a bit light...</p>
-            <button className="bg-indigo-600 text-white px-8 py-3 rounded-full font-medium hover:bg-indigo-700 transition">
+            <button onClick={() => navigate('/#services')} className="bg-indigo-600 text-white px-8 py-3 rounded-full font-medium hover:bg-indigo-700 transition">
               Explore Products
             </button>
           </div>

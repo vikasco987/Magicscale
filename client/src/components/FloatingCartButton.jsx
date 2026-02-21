@@ -1,30 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import { getCart } from "../utils/cartUtils";
+import { getCartCount, onCartUpdated } from "../utils/cartUtils";
 
 const FloatingCartButton = () => {
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const updateCartCount = () => {
-      const cart = getCart();
-      const totalItems = cart.reduce(
-        (sum, item) => sum + item.quantity,
-        0
-      );
-      setCount(totalItems);
-    };
-
-    updateCartCount();
-
-    // Listen when localStorage changes
-    window.addEventListener("storage", updateCartCount);
-
-    return () => {
-      window.removeEventListener("storage", updateCartCount);
-    };
+    setCount(getCartCount());
+    const unsubscribe = onCartUpdated(() => {
+      setCount(getCartCount());
+    });
+    return () => unsubscribe();
   }, []);
 
   return (

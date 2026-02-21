@@ -184,7 +184,7 @@ const services = [
 
 const HomeServices = () => {
   return (
-    <div className="relative py-20 px-4 sm:px-8 md:px-16 overflow-hidden bg-gradient-to-br from-sky-200 via-white to-sky-100">
+    <div id="services" className="relative py-20 px-4 sm:px-8 md:px-16 overflow-hidden bg-gradient-to-br from-sky-200 via-white to-sky-100">
       
       {/* Background Effects */}
       <div className="absolute w-80 h-80 bg-sky-300 rounded-full opacity-30 top-[-60px] left-[-60px] blur-3xl"></div>

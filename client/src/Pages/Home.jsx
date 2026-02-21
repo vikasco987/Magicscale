@@ -2,7 +2,8 @@
 
 
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 // import Services from "../components/Services";
@@ -19,6 +20,18 @@ import Pricing from "../components/Pricing";
 
 
 const Home = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location && location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        // smooth scroll to the section
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [location]);
   return (
     <div>
       <Header />
