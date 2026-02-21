@@ -348,6 +348,7 @@
 import React, { useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../utils/cartUtils";
 
 const planFeatures = [
   "Menu Score Update",
@@ -388,6 +389,7 @@ const premiumPlanFeatures = [
 const Pricing = () => {
   const navigate = useNavigate();
   const [durations, setDurations] = useState({ basic: 1, premium: 1 });
+  const [addedPlans, setAddedPlans] = useState({ basic: false, premium: false });
 
   const prices = {
     basic: 7999,
@@ -401,6 +403,21 @@ const Pricing = () => {
 
   const handleStart = (planSlug, months) => {
     navigate(`/checkout/${planSlug}?months=${months}`);
+  };
+
+  const handleAddToCart = (planKey, months) => {
+    const planName = planKey === 'basic' ? 'Basic Plan' : 'Premium Plan';
+    const totalPrice = prices[planKey] * months;
+
+    addToCart({
+      id: `plan-${planKey}-${months}`,
+      name: `${planName} (${months} mo)`,
+      price: totalPrice,
+      slug: `plan-${planKey}`,
+      quantity: 1,
+    });
+
+    setAddedPlans((prev) => ({ ...prev, [planKey]: true }));
   };
 
   return (
@@ -478,11 +495,24 @@ const Pricing = () => {
               </div>
 
               <button
+                onClick={() => handleAddToCart(planKey, duration)}
+                className={`mt-8 w-full py-3 rounded-xl font-bold text-white shadow-lg transform transition-all duration-300 ease-in-out ${
+                  addedPlans[planKey]
+                    ? "bg-green-600 hover:bg-green-700 shadow-none"
+                    : planType === "Basic"
+                    ? "bg-indigo-500 hover:bg-indigo-600 shadow-indigo-300"
+                    : "bg-purple-600 hover:bg-purple-700 shadow-purple-300"
+                }`}
+              >
+                {addedPlans[planKey] ? "Added to Cart ✓" : "Add to Cart"}
+              </button>
+
+              <button
                 onClick={() => handleStart(planKey, duration)}
-                className={`mt-8 w-full py-3 rounded-lg font-semibold text-white shadow-md transition-all duration-300 ${
+                className={`mt-2 w-full py-3 rounded-xl font-bold text-white shadow-lg transform transition-all duration-300 ease-in-out ${
                   planType === "Basic"
-                    ? "bg-indigo-500 hover:bg-indigo-600"
-                    : "bg-purple-600 hover:bg-purple-700"
+                    ? "bg-indigo-500 hover:bg-indigo-600 shadow-indigo-300"
+                    : "bg-purple-600 hover:bg-purple-700 shadow-purple-300"
                 }`}
               >
                 Get Started
