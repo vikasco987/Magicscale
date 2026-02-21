@@ -118,7 +118,7 @@ export default function AboutPage() {
           className="text-center bg-gradient-to-tr from-[#f3f6fd] to-white border border-indigo-100 rounded-2xl py-10 px-6 shadow-md"
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            🚀 300+ Kitchens, 12+ Cities, 1 Magic Team
+            🚀 900+ Kitchens, 28 States, 1 Magic Team
           </h3>
           <p className="text-gray-600 max-w-xl mx-auto text-sm sm:text-base">
             We’ve helped brands across India start from zero and scale to lakhs
