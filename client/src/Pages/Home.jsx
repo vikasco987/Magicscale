@@ -15,7 +15,6 @@ import Video from "../components/Video";
 import HomeWork from "../components/HomeWork";
 import Work from "../components/Work";
 import Pricing from "../components/Pricing";
-import LeadPopup from "../components/LeadPopup";
 // import UserDashboard from '../Pages/UserDashboard/UserDashboard';
 
 
@@ -41,7 +40,6 @@ const Home = () => {
       <Video />
       <HomeWork />
       <Pricing />
-      <LeadPopup />
       {/* <Services /> */}
       {/* <Testimonial /> */}
     
@@ -54,3 +52,4 @@ const Home = () => {
 
 export default Home;
 
+ 

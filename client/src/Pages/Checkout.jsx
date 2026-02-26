@@ -12,6 +12,7 @@ const validCoupons = {
     SAVE10: 10,
     SAVE15: 15,
     SAVE20: 20,
+    SAVE25: 25, // new coupon code requested by user
 };
 
 // Only disable for basic-growth and premium-growth plans
@@ -345,8 +346,8 @@ const Checkout = () => {
                         onClick={handleCashfreePayment}
                         disabled={!isFormFilled || loading || !sdkLoaded}
                         className={`mt-6 w-full py-3 rounded-xl font-semibold transition-all duration-300 text-white text-lg ${isFormFilled && !loading && sdkLoaded
-                                ? "bg-indigo-600 hover:bg-indigo-700"
-                                : "bg-gray-300 cursor-not-allowed"
+                            ? "bg-indigo-600 hover:bg-indigo-700"
+                            : "bg-gray-300 cursor-not-allowed"
                             }`}
                     >
                         {loading ? "Processing Payment..." : `Pay ₹${totalPrice.toLocaleString()}`}
@@ -356,8 +357,7 @@ const Checkout = () => {
         </div>
     );
 };
-
-export default Checkout;
+checkout;
 
 
 
