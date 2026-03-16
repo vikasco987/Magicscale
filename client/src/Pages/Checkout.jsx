@@ -512,6 +512,7 @@
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -2648,6 +2649,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-
 
