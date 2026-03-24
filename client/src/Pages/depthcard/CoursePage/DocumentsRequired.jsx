@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle } from "lucide-react"; // Assuming 'lucide-react' is installed for CheckCircle
+import { useTheme } from "../../../components/context/ThemeContext";
 
 const documents = [
   {
@@ -44,7 +45,8 @@ const documents = [
 ];
 
 // Accept isDarkMode as a prop
-const DocumentsRequired = ({ isDarkMode }) => {
+const DocumentsRequired = () => {
+  const { isDarkMode } = useTheme();
   return (
     <section
       // Main section background

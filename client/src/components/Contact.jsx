@@ -1,102 +1,149 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, ArrowRight } from "lucide-react";
+import { companyDetails } from "../data/companyDetails";
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative bg-gradient-to-b from-[#E9EFFD] to-white pt-[140px] pb-24 px-6 sm:px-10 lg:px-20 overflow-hidden"
+      className="relative pt-24 pb-32 px-6 sm:px-12 lg:px-24 bg-white dark:bg-slate-950 overflow-hidden font-poppins transition-colors duration-500"
     >
-      {/* Decorative background blobs */}
-      <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-indigo-300 opacity-20 blur-[120px] rounded-full z-0"></div>
-      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-indigo-300 opacity-20 blur-[120px] rounded-full z-0"></div>
+      {/* Premium Background Decorations */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-50/60 dark:bg-indigo-900/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-sky-50/60 dark:bg-sky-900/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
+      </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        {/* Left: Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-left"
-        >
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-            Get in Touch
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-20 space-y-4">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/30 border border-indigo-100 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-widest">
+            We're Here to Help
+          </div>
+          <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
+            Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-sky-600 dark:from-indigo-400 dark:to-sky-400">Touch</span>
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed mt-6">
             Have a question or need help getting started? Drop us a line, and
             our team will get back to you soon.
           </p>
+        </div>
 
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <span className="text-gray-800">Vishal Kushwaha</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <Phone className="text-indigo-600" />
-              <span className="text-gray-800">+91 9311330885</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <Mail className="text-indigo-600" />
-              <span className="text-gray-800">support@magicscale.in</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <MapPin className="text-indigo-600" />
-              <span className="text-gray-800">
-                Near Airforce camp , rajokari , new delhi - 110038
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right: Contact Form */}
-        <motion.form
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="bg-white p-8 text-start rounded-2xl shadow-lg border border-indigo-100 backdrop-blur-md"
-        >
-          <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-              Name
-            </label>
-            <input
-              type="text"
-              placeholder="Your full name"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-              Message
-            </label>
-            <textarea
-              rows="5"
-              placeholder="Tell us about your needs..."
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-xl transition"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Left: Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-10"
           >
-            Send Message
-          </button>
-        </motion.form>
+            {/* Contact Items */}
+            <div className="space-y-6">
+              {[
+                { icon: <MessageSquare size={24} />, title: "Contact Person", detail: companyDetails.founder },
+                { icon: <Phone size={24} />, title: "Phone Number", detail: companyDetails.phone.primary, link: `tel:${companyDetails.phone.primary.replace(/\s+/g, '')}` },
+                { icon: <Mail size={24} />, title: "Email Address", detail: companyDetails.email.support, link: `mailto:${companyDetails.email.support}` },
+                { icon: <MapPin size={24} />, title: "Office Location", detail: companyDetails.address.fullAddress }
+              ].map((item, idx) => (
+                <div key={idx} className="group flex items-start gap-5 p-6 rounded-[2rem] bg-gray-50 dark:bg-slate-900/50 border border-gray-100 dark:border-slate-800 hover:border-indigo-500/30 dark:hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300">
+                  <div className="w-14 h-14 shrink-0 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">
+                      {item.title}
+                    </h4>
+                    {item.link ? (
+                      <a href={item.link} className="text-xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                        {item.detail}
+                      </a>
+                    ) : (
+                      <p className="text-xl font-bold text-gray-900 dark:text-white leading-snug">
+                        {item.detail}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Box */}
+             <div className="p-8 rounded-[2rem] bg-indigo-600 text-white relative overflow-hidden shadow-2xl shadow-indigo-200 dark:shadow-none">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-2xl rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div className="relative z-10 flex items-center justify-between">
+                    <div>
+                        <h4 className="text-2xl font-black mb-1">Need fast support?</h4>
+                        <p className="text-indigo-100">Message us on WhatsApp</p>
+                    </div>
+                    <a 
+                      href={`https://wa.me/${companyDetails.phone.whatsappGroup}`} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="w-14 h-14 bg-white text-indigo-600 rounded-2xl flex items-center justify-center font-bold hover:scale-105 transition-transform"
+                    >
+                      <ArrowRight size={24} />
+                    </a>
+                </div>
+             </div>
+          </motion.div>
+
+          {/* Right: Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+             {/* Decorative blob behind form */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-sky-50 dark:from-indigo-900/20 dark:to-sky-900/20 rounded-[3rem] transform -rotate-2 scale-105 -z-10"></div>
+            
+            <form className="bg-white dark:bg-slate-900 p-10 md:p-14 text-start rounded-[2.5rem] shadow-2xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-800 space-y-8">
+              <div className="space-y-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white dark:focus:bg-slate-900 transition-all placeholder:text-gray-400"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="you@example.com"
+                      className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white dark:focus:bg-slate-900 transition-all placeholder:text-gray-400"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">
+                      Message
+                    </label>
+                    <textarea
+                      rows="4"
+                      placeholder="How can we help you?"
+                      className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white dark:focus:bg-slate-900 transition-all resize-none placeholder:text-gray-400"
+                    />
+                  </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-5 px-8 rounded-2xl transition-all flex justify-center items-center gap-2 shadow-lg shadow-indigo-200 dark:shadow-none hover:-translate-y-1 group"
+              >
+                Send Message
+                <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

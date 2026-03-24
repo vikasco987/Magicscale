@@ -59,7 +59,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   // If allowedRoles is specified, check if user has required role
   if (allowedRoles && !allowedRoles.includes(user.role)) {
     return <div style={{ padding: '2rem', textAlign: 'center', color: 'red' }}>
-      Access Denied. Only Admins and Sellers can view this page.
+      Access Denied. You do not have permission to view this page.
     </div>;
   }
 

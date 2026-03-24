@@ -34,8 +34,8 @@ const YoutubeVideo = ({ videoId, title }) => {
           </div>
         )}
       </div>
-      <div className="mt-4 text-white text-center">
-        <h2 className="text-2xl font-semibold">{title}</h2>
+      <div className="mt-4 text-gray-900 dark:text-white text-center">
+        <h2 className="text-2xl font-semibold transition-colors duration-500">{title}</h2>
       </div>
     </div>
   );

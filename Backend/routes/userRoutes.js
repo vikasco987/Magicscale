@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { getUserProfile, updateUserProfile } from '../controllers/userController.js';
+import { getUserProfile, updateUserProfile, getUserOrders } from '../controllers/userController.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
 import path from 'path';
 
@@ -38,6 +38,7 @@ const multipleUploads = upload.fields([
 
 // Routes
 router.get('/profile', verifyToken, getUserProfile);
+router.get('/orders', verifyToken, getUserOrders);
 
 // router.put('/profile', verifyToken, (req, res, next) => {
 //   multipleUploads(req, res, function (err) {

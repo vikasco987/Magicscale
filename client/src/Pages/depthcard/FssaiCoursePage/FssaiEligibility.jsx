@@ -1,226 +1,112 @@
-// import React from "react";
-// import {
-//   UtensilsCrossed,
-//   Wine,
-//   ChefHat,
-//   Truck,
-//   Factory,
-//   Store,
-//   Warehouse,
-//   ShoppingBasket,
-//   ShoppingCart,
-//   Bus,
-//   MoreHorizontal,
-// } from "lucide-react";
-
-// const businesses = [
-//   { label: "Canteens", icon: <UtensilsCrossed className="w-8 h-8" />, desc: "Corporate, school or hospital kitchens" },
-//   { label: "Clubs", icon: <Wine className="w-8 h-8" />, desc: "Clubs serving food & drinks" },
-//   { label: "Dhabas", icon: <ChefHat className="w-8 h-8" />, desc: "Highway/local dhaba-style eateries" },
-//   { label: "Distributors", icon: <Truck className="w-8 h-8" />, desc: "Food & beverage distribution networks" },
-//   { label: "Food Processors", icon: <Factory className="w-8 h-8" />, desc: "Factories or food manufacturing units" },
-//   { label: "Restaurants", icon: <UtensilsCrossed className="w-8 h-8" />, desc: "Fine-dine, cafes, or casual dining" },
-//   { label: "Retailers", icon: <Store className="w-8 h-8" />, desc: "Shops selling packaged or loose food" },
-//   { label: "Storage Units", icon: <Warehouse className="w-8 h-8" />, desc: "Cold storage, godowns or warehouses" },
-//   { label: "Suppliers", icon: <ShoppingBasket className="w-8 h-8" />, desc: "Bulk ingredient & raw material suppliers" },
-//   { label: "Transporters", icon: <Bus className="w-8 h-8" />, desc: "Food transport or delivery fleets" },
-//   { label: "Wholesalers", icon: <ShoppingCart className="w-8 h-8" />, desc: "Bulk sellers of food items" },
-//   {
-//     label: "Others (Street Vendors)",
-//     icon: <MoreHorizontal className="w-8 h-8" />,
-//     desc: "Including redi sellers, hawkers, and local food carts",
-//   },
-// ];
-
-// const FssaiEligibility = () => {
-//   return (
-//     <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-//       <div className="max-w-6xl mx-auto text-center">
-//         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-//           Who Needs an FSSAI FoSCoS License?
-//         </h2>
-//         <p className="text-gray-600 max-w-2xl mx-auto">
-//           Whether you're a large food business or a small street vendor, FSSAI registration is mandatory to legally prepare, store, distribute, or sell food in India.
-//         </p>
-
-//         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-12">
-//           {businesses.map((item, idx) => (
-//             <div
-//               key={idx}
-//               className="flex flex-col items-center justify-center bg-gray-100 p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300"
-//             >
-//               <div className="text-indigo-600 mb-3">{item.icon}</div>
-//               <h3 className="text-gray-800 font-semibold text-base mb-1 text-center">
-//                 {item.label}
-//               </h3>
-//               <p className="text-gray-600 text-sm text-center">{item.desc}</p>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default FssaiEligibility;
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../../../components/context/ThemeContext";
 
 const businesses = [
-  {
-    label: "Canteens",
-    emoji: "🍽️",
-    desc: "Corporate, school or hospital kitchens",
-    details: "Canteens must register under FSSAI to ensure food served to large groups is hygienic and safe.",
-  },
-  {
-    label: "Clubs",
-    emoji: "🍷",
-    desc: "Clubs serving food & drinks",
-    details: "Clubs that offer food or beverages must comply with FSSAI rules for preparation and service.",
-  },
-  {
-    label: "Dhabas",
-    emoji: "🧑‍🍳",
-    desc: "Roadside dhaba-style eateries",
-    details: "Dhabas must be registered to ensure roadside food meets safety standards.",
-  },
-  {
-    label: "Distributors",
-    emoji: "🚚",
-    desc: "Food & beverage distribution",
-    details: "Distributors moving packaged or fresh food need FSSAI registration for traceability.",
-  },
-  {
-    label: "Food Processors",
-    emoji: "🏭",
-    desc: "Food manufacturing units",
-    details: "Factories involved in food processing must be licensed to comply with hygiene norms.",
-  },
-  {
-    label: "Restaurants",
-    emoji: "🍛",
-    desc: "Fine-dine, cafes, or casual dining",
-    details: "Restaurants need FSSAI license to legally serve and prepare food for public consumption.",
-  },
-  {
-    label: "Retailers",
-    emoji: "🏬",
-    desc: "Shops selling packaged or loose food",
-    details: "Any food retail outlet must register under FSSAI before selling food items.",
-  },
-  {
-    label: "Storage Units",
-    emoji: "📦",
-    desc: "Cold storage, godowns or warehouses",
-    details: "Storage facilities must register to ensure food preservation standards are met.",
-  },
-  {
-    label: "Suppliers",
-    emoji: "🧺",
-    desc: "Bulk ingredient & raw material suppliers",
-    details: "Suppliers of ingredients must register under FSSAI to maintain supply chain integrity.",
-  },
-  {
-    label: "Transporters",
-    emoji: "🚌",
-    desc: "Food transport or delivery fleets",
-    details: "Vehicles transporting food must comply with FSSAI transport standards.",
-  },
-  {
-    label: "Wholesalers",
-    emoji: "🛒",
-    desc: "Bulk sellers of food items",
-    details: "Wholesalers handling large food volumes must register for traceability and compliance.",
-  },
-  {
-    label: "Others (Street Vendors)",
-    emoji: "🌯",
-    desc: "Redi sellers, hawkers, and food carts",
-    details: "Street vendors must register to legally serve food, even if operating on a small scale.",
-  },
+  { label: "Canteens", emoji: "🍽️", desc: "Corporate or hospital kitchens", details: "Canteens must register under FSSAI to ensure food served to large groups is safe." },
+  { label: "Restaurants", emoji: "🍛", desc: "Fine-dine, cafes, casual", details: "Restaurants need an FSSAI license to legally serve food for public consumption." },
+  { label: "Retailers", emoji: "🏬", desc: "Packaged or loose food", details: "Any food retail outlet must register before selling any type of food grocery items." },
+  { label: "Storage Units", emoji: "📦", desc: "Cold storage, warehouses", details: "Storage facilities register to ensure food preservation standards are strictly met." },
+  { label: "Distributors", emoji: "🚚", desc: "Food & beverages", details: "Distributors moving packaged or fresh food need FSSAI registration for traceability." },
+  { label: "Suppliers", emoji: "🧺", desc: "Raw material suppliers", details: "Suppliers of ingredients must register to maintain safe supply chain integrity." },
+  { label: "Clubs", emoji: "🍷", desc: "Clubs serving food", details: "Clubs that offer food or beverages must comply with FSSAI preparation rules." },
+  { label: "Street Vendors", emoji: "🌯", desc: "Carts and hawkers", details: "Street vendors must register to legally serve food, even operating at small scale." },
 ];
 
 const FssaiEligibility = () => {
+  const { isDarkMode } = useTheme();
   const [selected, setSelected] = useState(null);
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        type: "spring",
-      },
+      opacity: 1, y: 0, transition: { delay: i * 0.05, duration: 0.4, type: "spring" }
     }),
   };
 
   return (
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Who Needs an FSSAI FoSCoS License?
+    <section className="pt-6">
+      <div className="flex flex-col items-center sm:items-start mb-10 text-center sm:text-left">
+        <h2 className={`text-2xl sm:text-3xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+          Who Needs an FSSAI License?
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Whether you're running a large food business or a street food stall, FSSAI registration is mandatory to legally operate in India.
+        <p className={`mt-3 font-medium text-sm sm:text-base ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+          Almost every entity touching food items legally requires FSSAI compliance.
         </p>
+      </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-12">
-          {businesses.map((item, idx) => (
-            <motion.div
-              key={idx}
-              className="cursor-pointer bg-gray-100 p-6 rounded-xl shadow-sm hover:shadow-md hover:bg-gray-50 transition duration-300 flex flex-col items-center justify-center"
-              onClick={() => setSelected(item)}
-              custom={idx}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="text-4xl mb-3">{item.emoji}</div>
-              <h3 className="text-gray-800 font-semibold text-base mb-1 text-center">
-                {item.label}
-              </h3>
-              <p className="text-gray-600 text-sm text-center">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+        {businesses.map((item, idx) => (
+          <motion.div
+            key={idx}
+            className={`cursor-pointer p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 flex flex-col items-center justify-center hover:-translate-y-1 hover:shadow-xl ${
+              isDarkMode 
+                ? 'bg-[#0f172a]/40 border-slate-700/50 hover:bg-[#0f172a]/80 hover:border-blue-500/30 hover:shadow-blue-900/10' 
+                : 'bg-white border-slate-200/80 hover:shadow-slate-200/80 hover:border-blue-200'
+            }`}
+            onClick={() => setSelected(item)}
+            custom={idx}
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <div className="text-3xl mb-3 drop-shadow-sm">{item.emoji}</div>
+            <h3 className={`font-bold text-[13px] sm:text-sm mb-1 text-center leading-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+              {item.label}
+            </h3>
+            <p className={`text-[10px] sm:text-[11px] text-center font-medium leading-relaxed px-1 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
       </div>
 
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelected(null)}
           >
             <motion.div
-              className="bg-white rounded-lg max-w-md w-full p-6 relative shadow-lg text-left"
-              initial={{ y: 50, scale: 0.9 }}
+              className={`rounded-2xl max-w-sm w-full p-8 relative shadow-2xl text-center border overflow-hidden ${
+                isDarkMode ? 'bg-[#0f172a] border-slate-700/80' : 'bg-white border-slate-200'
+              }`}
+              initial={{ y: 50, scale: 0.95 }}
               animate={{ y: 0, scale: 1 }}
-              exit={{ y: 50, scale: 0.9 }}
+              exit={{ y: 50, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Decorative top glow */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-indigo-500" />
+              
               <button
-                className="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-xl"
+                className={`absolute top-4 right-4 p-1.5 rounded-full transition-colors ${isDarkMode ? 'bg-slate-800 text-slate-400 hover:text-white' : 'bg-slate-100 text-slate-500 hover:text-slate-900'}`}
                 onClick={() => setSelected(null)}
               >
                 &times;
               </button>
-              <div className="text-5xl mb-3 text-center">{selected.emoji}</div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2 text-center">{selected.label}</h3>
-              <p className="text-gray-600 text-sm text-center">{selected.details}</p>
+              
+              <div className="text-6xl mb-4 drop-shadow-md">{selected.emoji}</div>
+              <h3 className={`text-xl font-black mb-3 tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                {selected.label}
+              </h3>
+              <p className={`text-sm font-medium leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                {selected.details}
+              </p>
+              
+              <button 
+                onClick={() => setSelected(null)}
+                className={`mt-6 w-full py-2.5 rounded-xl text-sm font-bold border transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white' 
+                    : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Got it
+              </button>
             </motion.div>
           </motion.div>
         )}

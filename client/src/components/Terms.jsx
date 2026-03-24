@@ -81,16 +81,16 @@ const terms = [
 
 const Terms = () => {
   return (
-    <div className="w-full">
-      <div className="bg-indigo-500 text-white p-0.5 sm:text-[17px] md:text-[1.8rem] text-center w-full">
+    <div className="w-full bg-white dark:bg-slate-950 transition-colors duration-500">
+      <div className="bg-indigo-500 dark:bg-indigo-600 text-white p-0.5 sm:text-[17px] md:text-[1.8rem] text-center w-full">
         <p className="font-bold">TERMS OF SERVICE - Vishal Kushwaha</p>
       </div>
 
-      <div className="w-full p-[20px] md:px-[120px] md:py-[50px]">
+      <div className="w-full p-[20px] md:px-[120px] md:py-[50px] dark:text-gray-300">
         {terms.map((term, index) => {
           return (
-            <div key={index} className="py-4 border-b-2 border-gray-50">
-              <h2 className="text-[30px] pb-2 font-extrabold text-[#333]">
+            <div key={index} className="py-4 border-b-2 border-gray-50 dark:border-slate-800">
+              <h2 className="text-[30px] pb-2 font-extrabold text-[#333] dark:text-white">
                 {term.title}
               </h2>
               <p dangerouslySetInnerHTML={{ __html: term.content }}></p>

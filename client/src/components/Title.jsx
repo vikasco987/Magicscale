@@ -4,7 +4,7 @@ const Title = ({ title, preTitle, color }) => {
   return (
     <div>
       <h2
-        className={`md:text-5xl w-[100%] uppercase text-3xl text-center font-poppins font-bold text-${color}`}
+        className={`md:text-5xl w-[100%] uppercase text-3xl text-center font-poppins font-bold ${color ? `text-${color}` : 'text-gray-900 dark:text-white'}`}
       >
         {preTitle}
         {/* <br className="md:hidden" /> */}

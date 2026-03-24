@@ -20,8 +20,8 @@ const Login = () => {
     setError('');
 
     try {
-      //'http://localhost:5000/api/auth/login'
-      const res = await fetch('https://magicscale-backend.onrender.com/api/auth/login', {
+      //'http://localhost:5001/api/auth/login'
+      const res = await fetch('http://localhost:5001/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,24 +54,24 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-white relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-white dark:from-slate-900 dark:to-slate-950 relative transition-colors duration-500">
       {/* Background Shape */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-200 rounded-full blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-200 dark:bg-blue-900 rounded-full blur-3xl opacity-50 dark:opacity-20 translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
 
-      <div className="relative z-10 flex w-full max-w-6xl bg-white shadow-xl rounded-xl overflow-hidden">
+      <div className="relative z-10 flex flex-col md:flex-row w-[90%] md:w-full max-w-6xl bg-white dark:bg-gray-900 shadow-xl dark:shadow-2xl rounded-xl overflow-hidden border border-transparent dark:border-gray-800 mx-auto my-8">
         {/* Left Section */}
-        <div className="w-1/2 p-10 flex flex-col justify-center bg-blue-50">
-          <div className="text-4xl font-extrabold text-blue-900 mb-4 font-logo tracking-wide">
-            <span className="text-blue-600">Magic</span> Scale
+        <div className="hidden md:flex w-full md:w-1/2 p-6 md:p-10 flex-col justify-center bg-blue-50 dark:bg-slate-800/50">
+          <div className="text-4xl font-extrabold text-blue-900 dark:text-white mb-4 font-logo tracking-wide">
+            <span className="text-blue-600 dark:text-blue-400">Magic</span> Scale
           </div>
-          <p className="text-gray-700 text-lg leading-relaxed">
+          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
             We help restaurants onboard faster and grow their business. <br />
             From setup to branding to full tech support — all in one smart platform.
           </p>
         </div>
 
         {/* Right Section (Login) */}
-        <div className="w-1/2 p-10 flex flex-col justify-center">
+        <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center dark:bg-gray-900">
           <h2 className="text-3xl font-bold text-blue-800 mb-6">Login</h2>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-gray-50">

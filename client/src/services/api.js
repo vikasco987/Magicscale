@@ -3,7 +3,7 @@
 //  * This centralizes all API calls and handles token management
 //  */
 
-// const API_URL = 'http://localhost:5000/api';
+// const API_URL = 'http://localhost:5001/api';
 
 // /**
 //  * Make an authenticated API request
@@ -166,7 +166,7 @@
  * This centralizes all API calls and handles token management
  */
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:5001/api';
 
 /**
  * Make an authenticated API request

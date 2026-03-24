@@ -296,7 +296,13 @@ export const register = async (req, res) => {
         user.password = await bcrypt.hash(password, 10);
         await user.save();
 
-        await sendOTP(email, otp);
+        try {
+          await sendOTP(email, otp);
+        } catch (emailErr) {
+          console.error('❌ Email send error (resend):', emailErr.message);
+          return res.status(500).json({ message: 'Failed to send OTP email. Check your email configuration.' });
+        }
+
         return res.status(200).json({ message: 'OTP resent. Please verify your email.', userId: user._id });
       }
     }
@@ -311,11 +317,19 @@ export const register = async (req, res) => {
       isVerified: false,
     });
 
-    await sendOTP(email, otp);
+    try {
+      await sendOTP(email, otp);
+    } catch (emailErr) {
+      console.error('❌ Email send error (new user):', emailErr.message);
+      // Delete user so they can try again
+      await User.findByIdAndDelete(newUser._id);
+      return res.status(500).json({ message: 'Failed to send OTP email. Check your email configuration.' });
+    }
+
     return res.status(201).json({ message: 'OTP sent to email', userId: newUser._id });
   } catch (error) {
-    console.error('Register error:', error.message);
-    return res.status(500).json({ message: 'Server error during registration' });
+    console.error('❌ Register error:', error.message, error.stack);
+    return res.status(500).json({ message: 'Server error during registration: ' + error.message });
   }
 };
 

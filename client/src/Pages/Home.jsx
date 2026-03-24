@@ -51,25 +51,24 @@ import Footer from "../components/Footer";
 import Video from "../components/Video";
 import HomeWork from "../components/HomeWork";
 import Work from "../components/Work";
-import Pricing from "../components/Pricing";
-// import UserDashboard from '../Pages/UserDashboard/UserDashboard';
-
-
+import FAQ from "../components/FAQ";
+import PricingSummary from "../components/PricingSummary";
+import Process from "../components/Process";
 
 const Home = () => {
   return (
-    <div>
-      <Header />
+    <div className="dark:bg-slate-950 transition-colors duration-500">
       {/* <UserDashboard /> */}
       <Hero />
       <Video />
-      <HomeWork />
-      <Pricing />
+      <Process />
+      <PricingSummary />
       {/* <Services /> */}
       {/* <Testimonial /> */}
     
-      <Contact />
       <About />
+      <FAQ />
+      <Contact />
       <Footer />
     </div>
   );

@@ -37,19 +37,17 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const data = await authAPI.checkToken();
+        const userData = await authAPI.getProfile();
 
-        if (data.success) {
-          if (!user) {
-            const profileData = await authAPI.getProfile();
-            setUser(profileData.user);
-            localStorage.setItem('user', JSON.stringify(profileData.user));
-          }
+        if (userData && (userData._id || userData.email)) {
+          setUser(userData);
           setIsAuthenticated(true);
+          localStorage.setItem('user', JSON.stringify(userData));
         }
       } catch (error) {
-        console.error('Token verification failed:', error);
-        logout(); // Invalid token, logout
+        console.error('Token verification background check failed (Network or 500). Keeping session active:', error);
+        // We DO NOT call logout() here! api.js already handles 401 Unauthorized securely by clearing localStorage.
+        // Destroying the session on a generic 500 or network lag causes random page-refresh logouts!
       } finally {
         setIsLoading(false);
       }

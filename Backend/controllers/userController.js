@@ -119,3 +119,11 @@ export const getUserSubscriptions = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch subscriptions" });
   }
 };
+
+export const getUserOrders = async (req, res) => {
+  try {
+    res.status(200).json([]); // Currently no Order model, returning empty list
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch orders" });
+  }
+};

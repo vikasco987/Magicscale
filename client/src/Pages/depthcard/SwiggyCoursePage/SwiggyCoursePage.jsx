@@ -1,395 +1,72 @@
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import swiggyImg from '../../../assets/zomato3.png';
-// import { FaTv, FaDownload, FaSatelliteDish, FaSmile } from 'react-icons/fa';
-// import SwiggyFAQ from './SwiggyFAQ';
-// import SwiggyWhatYouGet from './SwiggyWhatYouGet';
-
-// const SwiggyOnboardingCourse = () => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="bg-orange-50 text-gray-900 min-h-screen py-10 px-4 sm:px-6 md:px-16 font-[Poppins]">
-//       <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10">
-//         {/* ✅ Left Section */}
-//         <div className="w-full md:w-[66%] space-y-6 md:pr-8">
-//           <p className="text-sm text-orange-600">Business & Marketing {'>'} Swiggy</p>
-//           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-//             Swiggy Onboarding & Restaurant Launch A–Z
-//           </h1>
-
-//           <p className="text-base sm:text-lg text-gray-700">
-//             This onboarding service is perfect for cloud kitchens, cafés, and food businesses. We’ll handle your registration, design, payments, and delivery setup — all in one place.
-//           </p>
-
-//           {/* ✅ Highlight Section */}
-//           <div className="bg-orange-100 text-orange-900 rounded-lg p-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-//             <div className="flex items-start gap-3">
-//               <div className="bg-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-//                 Premium
-//               </div>
-//               <p className="text-sm">
-//                 Expert setup, full documentation support & fast-track approval.
-//                 <span className="ml-2 underline cursor-pointer hover:text-orange-600">See Onboarding Plans</span>
-//               </p>
-//             </div>
-//             <div className="flex flex-col sm:flex-row gap-2 text-sm">
-//               <div className="flex items-center gap-1">
-//                 <span className="font-semibold text-yellow-500">4.8</span> ★
-//                 <span className="text-gray-600 hidden sm:inline">(152 reviews)</span>
-//               </div>
-//               <div className="text-gray-600 sm:border-l sm:border-gray-400 sm:pl-4">
-//                 <span className="font-semibold">230+</span> onboarded
-//               </div>
-//             </div>
-//           </div>
-
-//           <p className="text-sm text-gray-500">
-//             Delivered by <span className="text-orange-600 font-semibold">MagicScale Team</span>
-//           </p>
-//           <p className="text-sm text-gray-500">Last updated 06/2025 • Hindi & English</p>
-
-//           {/* ✅ Features Section */}
-//           <div className="mt-10">
-//             <SwiggyWhatYouGet />
-//             <h3 className="text-2xl font-semibold mb-6">More reasons to onboard</h3>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-//               {[{
-//                 icon: <FaTv className="mx-auto text-3xl mb-3 text-orange-500" />,
-//                 title: "Live Dashboard Access",
-//                 desc: "Track orders, payments, and delivery status directly from your dashboard."
-//               },
-//               {
-//                 icon: <FaDownload className="mx-auto text-3xl mb-3 text-pink-500" />,
-//                 title: "Menu Download Setup",
-//                 desc: "Enable downloadable menu for WhatsApp or printing."
-//               },
-//               {
-//                 icon: <FaSatelliteDish className="mx-auto text-3xl mb-3 text-red-500" />,
-//                 title: "Nationwide Coverage",
-//                 desc: "We assist across India — metros, tier 2 cities, and remote areas."
-//               },
-//               {
-//                 icon: <FaSmile className="mx-auto text-3xl mb-3 text-pink-400" />,
-//                 title: "Multi-Outlet Support",
-//                 desc: "Easily onboard multiple branches or cloud kitchens."
-//               }].map((item, idx) => (
-//                 <div key={idx} className="bg-white rounded-xl p-5 text-center shadow">
-//                   {item.icon}
-//                   <h4 className="text-lg font-bold mb-1">{item.title}</h4>
-//                   <p className="text-sm text-gray-600">{item.desc}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-
-//           <SwiggyFAQ />
-//         </div>
-
-//         {/* ✅ Right: Sticky Checkout Bar */}
-//         <div className="w-full md:w-[34%]">
-//           <div className="md:sticky md:top-20 mt-10 md:mt-0">
-//             <div className="bg-white text-gray-900 rounded-xl shadow-lg p-5 w-full max-w-sm mx-auto md:mx-0">
-//               <img src={swiggyImg} alt="Swiggy setup" className="rounded-md mb-4 w-full object-cover" />
-//               <h2 className="text-3xl font-bold mb-1">₹1,999</h2>
-//               <p className="text-sm text-gray-600 mb-3">Complete onboarding service</p>
-
-//               <button
-//                 onClick={() => navigate('/checkout/swiggy')}
-//                 className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
-//               >
-//                 Go to Cart
-//               </button>
-
-//               <button
-//                 onClick={() => navigate('/checkout/swiggy')}
-//                 className="w-full border mt-2 border-orange-600 text-orange-700 py-2 rounded-lg hover:bg-orange-50"
-//               >
-//                 Buy Now
-//               </button>
-
-//               <p className="text-xs text-gray-500 text-center mt-2">30-Day Money-Back Guarantee</p>
-
-//               {/* ✅ Features List */}
-//               <ul className="text-sm mt-5 text-gray-700 space-y-2">
-//                 <li>✔ Restaurant partner account setup</li>
-//                 <li>✔ Logo, design, and branding materials</li>
-//                 <li>✔ On-call and WhatsApp support</li>
-//                 <li>✔ Fast-track listing service</li>
-//               </ul>
-
-//               {/* ✅ Coupon Section */}
-//               <div className="mt-6">
-//                 <label className="text-sm font-medium text-gray-700 block mb-1">Apply Coupon</label>
-//                 <input
-//                   type="text"
-//                   placeholder="Enter coupon code"
-//                   className="w-full border px-3 py-2 rounded text-sm mb-2"
-//                 />
-//                 <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md text-sm font-semibold">
-//                   Apply Coupon
-//                 </button>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SwiggyOnboardingCourse;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import swiggyImg from '../../../assets/zomato3.png';
-// import { FaTv, FaDownload, FaSatelliteDish, FaSmile } from 'react-icons/fa';
-// import SwiggyFAQ from './SwiggyFAQ';
-// import SwiggyWhatYouGet from './SwiggyWhatYouGet';
-// import DocumentsRequired from './DocumentsRequired';
-
-// const SwiggyOnboardingCourse = () => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <div className="bg-orange-50 text-gray-900 min-h-screen pb-32 relative font-[Poppins]">
-//       <div className="px-4 sm:px-6 md:px-16">
-//         <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10">
-//           {/* ✅ Left Section */}
-//           <div className="w-full md:w-[66%] space-y-6 md:pr-8">
-//             <p className="text-sm text-orange-600">Business & Marketing {'>'} Swiggy</p>
-//             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-//               Swiggy Onboarding & Restaurant Launch A–Z
-//             </h1>
-
-//             <p className="text-base sm:text-lg text-gray-700">
-//               This onboarding service is perfect for cloud kitchens, cafés, and food businesses. We’ll handle your registration, design, payments, and delivery setup — all in one place.
-//             </p>
-
-//             {/* ✅ Highlight Section */}
-//             <div className="bg-orange-100 text-orange-900 rounded-lg p-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-//               <div className="flex items-start gap-3">
-//                 <div className="bg-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-//                   Premium
-//                 </div>
-//                 <p className="text-sm">
-//                   Expert setup, full documentation support & fast-track approval.
-//                   <span className="ml-2 underline cursor-pointer hover:text-orange-600">See Onboarding Plans</span>
-//                 </p>
-//               </div>
-//               <div className="flex flex-col sm:flex-row gap-2 text-sm">
-//                 <div className="flex items-center gap-1">
-//                   <span className="font-semibold text-yellow-500">4.8</span> ★
-//                   <span className="text-gray-600 hidden sm:inline">(152 reviews)</span>
-//                 </div>
-//                 <div className="text-gray-600 sm:border-l sm:border-gray-400 sm:pl-4">
-//                   <span className="font-semibold">230+</span> onboarded
-//                 </div>
-//               </div>
-//             </div>
-
-//             <p className="text-sm text-gray-500">
-//               Delivered by <span className="text-orange-600 font-semibold">MagicScale Team</span>
-//             </p>
-//             <p className="text-sm text-gray-500">Last updated 06/2025 • Hindi & English</p>
-
-//             <div className="mt-10">
-//             <DocumentsRequired/>
-//               <SwiggyWhatYouGet />
-//               <h3 className="text-2xl font-semibold mb-6">More reasons to onboard</h3>
-//               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-//                 {[{
-//                   icon: <FaTv className="mx-auto text-3xl mb-3 text-orange-500" />,
-//                   title: "Live Dashboard Access",
-//                   desc: "Track orders, payments, and delivery status directly from your dashboard."
-//                 },
-//                 {
-//                   icon: <FaDownload className="mx-auto text-3xl mb-3 text-pink-500" />,
-//                   title: "Menu Download Setup",
-//                   desc: "Enable downloadable menu for WhatsApp or printing."
-//                 },
-//                 {
-//                   icon: <FaSatelliteDish className="mx-auto text-3xl mb-3 text-red-500" />,
-//                   title: "Nationwide Coverage",
-//                   desc: "We assist across India — metros, tier 2 cities, and remote areas."
-//                 },
-//                 {
-//                   icon: <FaSmile className="mx-auto text-3xl mb-3 text-pink-400" />,
-//                   title: "Multi-Outlet Support",
-//                   desc: "Easily onboard multiple branches or cloud kitchens."
-//                 }].map((item, idx) => (
-//                   <div key={idx} className="bg-white rounded-xl p-5 text-center shadow">
-//                     {item.icon}
-//                     <h4 className="text-lg font-bold mb-1">{item.title}</h4>
-//                     <p className="text-sm text-gray-600">{item.desc}</p>
-//                   </div>
-//                 ))}
-//               </div>
-//             </div>
-
-//             <SwiggyFAQ />
-//           </div>
-
-//           {/* ✅ Right Sticky Checkout (Desktop) */}
-//           <div className="hidden md:block md:w-[34%]">
-//             <div className="sticky top-20">
-//               <div className="bg-white text-gray-900 rounded-xl shadow-lg p-5 w-full max-w-sm ml-auto">
-//                 <img src={swiggyImg} alt="Swiggy setup" className="rounded-md mb-4 w-full object-cover h-40" />
-//                 <h2 className="text-3xl font-bold mb-1">₹1,999</h2>
-//                 <p className="text-sm text-gray-600 mb-3">Complete onboarding service</p>
-
-//                 <button
-//                   onClick={() => navigate('/checkout/swiggy')}
-//                   className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
-//                 >
-//                   Go to Cart
-//                 </button>
-
-//                 <button
-//                   onClick={() => navigate('/checkout/swiggy')}
-//                   className="w-full border mt-2 border-orange-600 text-orange-700 py-2 rounded-lg hover:bg-orange-50"
-//                 >
-//                   Buy Now
-//                 </button>
-
-//                 <p className="text-xs text-gray-500 text-center mt-2">30-Day Money-Back Guarantee</p>
-
-//                 <ul className="text-sm mt-5 text-gray-700 space-y-2">
-//                   <li>✔ Restaurant partner account setup</li>
-//                   <li>✔ Logo, design, and branding materials</li>
-//                   <li>✔ On-call and WhatsApp support</li>
-//                   <li>✔ Fast-track listing service</li>
-//                 </ul>
-
-//                 <div className="mt-6">
-//                   <label className="text-sm font-medium text-gray-700 block mb-1">Apply Coupon</label>
-//                   <input
-//                     type="text"
-//                     placeholder="Enter coupon code"
-//                     className="w-full border px-3 py-2 rounded text-sm mb-2"
-//                   />
-//                   <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md text-sm font-semibold">
-//                     Apply Coupon
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* ✅ Mobile Floating Summary Bar */}
-//       <div className="fixed md:hidden bottom-0 left-0 right-0 bg-white shadow-inner px-4 py-3 z-50 border-t flex items-center justify-between">
-//         <div>
-//           <h4 className="text-lg font-semibold">₹1,999</h4>
-//           <p className="text-xs text-gray-600 truncate max-w-[180px]">Complete onboarding service</p>
-//         </div>
-//         <button
-//           onClick={() => navigate('/checkout/swiggy')}
-//           className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm hover:bg-orange-700"
-//         >
-//           Continue
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SwiggyOnboardingCourse;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import swiggyImg from '../../../assets/zomato3.png'; // Consider replacing with a more generic or Swiggy-specific image if available
-import { FaTv, FaDownload, FaSatelliteDish, FaSmile, FaCheckCircle, FaTag } from 'react-icons/fa'; // Added FaTag for coupon icon
+import swiggyImg from '../../../assets/zomato_hero_art_generated.png';
+import { FaTv, FaDownload, FaSatelliteDish, FaSmile, FaTag } from 'react-icons/fa';
+import { useTheme } from '../../../components/context/ThemeContext';
 import SwiggyFAQ from './SwiggyFAQ';
 import SwiggyWhatYouGet from './SwiggyWhatYouGet';
 import DocumentsRequired from './DocumentsRequired';
+import SiteFooter from '../FssaiCoursePage/SiteFooter';
+import { CheckCircle2, ChevronRight, Star, ShieldCheck } from 'lucide-react';
 
 const SwiggyOnboardingCourse = () => {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
 
-  // Define your two Swiggy plans with names and prices
   const plans = {
-    basic: {
-      name: "Swiggy Basic Onboarding",
+    planA: {
+      name: 'Swiggy Basic Onboarding',
       price: 1999,
-      slug: "swiggy-basic",
-      description: "Quick and essential setup to get your restaurant live on Swiggy.",
+      slug: 'swiggy-basic',
+      description: 'Quick and essential setup to get your restaurant live on Swiggy.',
       features: [
-        "Restaurant partner account setup",
-        "Basic menu creation & upload",
-        "Initial listing support",
+        'Restaurant partner account setup',
+        'Basic menu creation & upload',
+        'Initial listing support',
       ],
-      tagline: "Your fast track to Swiggy listing."
     },
-    premium: {
-      name: "Swiggy Prime Onboarding",
+    planB: {
+      name: 'Swiggy Prime Onboarding',
       price: 2999,
-      slug: "swiggy-prime",
-      description: "Comprehensive service including advanced menu management and priority support.",
+      slug: 'swiggy-prime',
+      description: 'Comprehensive service including advanced menu management and priority support.',
       features: [
-        "Restaurant partner account setup",
-        "Advanced menu design & optimization",
-        "On-call and WhatsApp priority support",
-        "Fast-track listing & approval",
-        "Restaurant profile branding assistance",
-        "Performance tips & basic insights"
+        'Restaurant partner account setup',
+        'Advanced menu design & optimization',
+        'On-call and WhatsApp priority support',
+        'Fast-track listing & approval',
+        'Restaurant profile branding assistance',
+        'Performance tips & basic insights'
       ],
-      tagline: "Maximize your presence with a complete setup."
-    }
+    },
   };
 
-  // Define available coupons
-  const availableCoupons = [
-    { code: 'MAGIC20', discount: 20, description: 'Get 20% off on your total purchase!' },
-    { code: 'SWIGGY100', discount: null, flatDiscount: 10, description: 'Get ₹10 off on any plan!' },
-    { code: 'NEWUSER50', discount: null, flatDiscount: 5, description: '₹5 off for new users!' },
+  const notices = [
+    { text: "Swiggy One integration updates: New benefits for partner restaurants.", date: "2026-03-22", link: "https://partner.swiggy.com/login" },
+    { text: "Menu image guidelines strictly enforced for higher visibility.", date: "2026-03-19", link: "https://partner.swiggy.com/login" },
+    { text: "Instamart cross-promotional opportunities now available for select vendors.", date: "2026-03-10", link: "https://partner.swiggy.com/login" }
   ];
 
-  const [selectedPlan, setSelectedPlan] = useState('basic');
+  const availableCoupons = [
+    { code: 'MAGIC20', discount: 20, description: 'Get 20% off on your total purchase!' },
+    { code: 'SWIGGY100', discount: null, flatDiscount: 100, description: 'Get ₹100 off on any plan!' },
+    { code: 'NEWUSER50', discount: null, flatDiscount: 50, description: '₹50 off for new users!' },
+  ];
+
+  const [selectedPlan, setSelectedPlan] = useState('planB'); // Default to the more premium plan for better aesthetics
+  const currentPlan = plans[selectedPlan];
   const [couponCode, setCouponCode] = useState('');
   const [discountApplied, setDiscountApplied] = useState(false);
-  const [appliedCouponInfo, setAppliedCouponInfo] = useState(null); // Stores info about the applied coupon
-  const [finalPrice, setFinalPrice] = useState(0);
+  const [appliedCouponInfo, setAppliedCouponInfo] = useState(null);
+  const [finalPrice, setFinalPrice] = useState(currentPlan.price);
 
-  const currentPlan = plans[selectedPlan];
+  const mainContentRef = useRef(null);
+  const checkoutRef = useRef(null);
 
-  // Effect to recalculate price whenever selectedPlan or discountApplied changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   useEffect(() => {
     let price = currentPlan.price;
     if (discountApplied && appliedCouponInfo) {
@@ -399,12 +76,11 @@ const SwiggyOnboardingCourse = () => {
         price = price - appliedCouponInfo.flatDiscount;
       }
     }
-    setFinalPrice(Math.max(0, Math.round(price))); // Ensure price doesn't go below zero
+    setFinalPrice(Math.max(0, Math.round(price)));
   }, [selectedPlan, discountApplied, currentPlan.price, appliedCouponInfo]);
 
   const handleCouponApply = () => {
-    const couponToApply = availableCoupons.find(coupon => coupon.code.toUpperCase() === couponCode.toUpperCase());
-
+    const couponToApply = availableCoupons.find(coupon => coupon.code.toUpperCase() === couponCode.trim().toUpperCase());
     if (couponToApply) {
       setDiscountApplied(true);
       setAppliedCouponInfo(couponToApply);
@@ -418,7 +94,9 @@ const SwiggyOnboardingCourse = () => {
 
   const handleCouponSelect = (coupon) => {
     setCouponCode(coupon.code);
-    handleCouponApply(); // Automatically apply when selected
+    setDiscountApplied(true);
+    setAppliedCouponInfo(coupon);
+    alert(`Coupon "${coupon.code}" applied! ${coupon.description}`);
   };
 
   const handleRemoveCoupon = () => {
@@ -431,377 +109,356 @@ const SwiggyOnboardingCourse = () => {
     navigate(`/checkout/${currentPlan.slug}?finalPrice=${finalPrice}&discountApplied=${discountApplied}&couponCode=${appliedCouponInfo ? appliedCouponInfo.code : ''}`);
   };
 
-  return (
-    <div className="bg-orange-50 text-gray-900 min-h-screen pb-32 md:pb-0 relative font-[Poppins]">
-      {/* Adjusted padding to control space from edges */}
-      <div className="px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row max-w-7xl mx-auto gap-10">
-          {/* ✅ Left Section */}
-          <div className="w-full md:w-[66%] space-y-6 md:pr-8">
-            <p className="text-sm text-orange-600">Business & Marketing {'>'} Swiggy</p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              Swiggy Onboarding & Restaurant Launch A–Z
-            </h1>
+  // Live Updates Notice Board
+  const renderLiveNotice = (isMobile = false) => (
+    <div className={`mt-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(252,128,25,0.25)] overflow-hidden transition-all duration-300 w-full ${isMobile ? 'max-w-sm mx-auto' : ''
+      } ${isDarkMode ? 'bg-[#fc8019] border border-[#fc8019]/20' : 'bg-[#fc8019]'
+      }`}>
+      <div className="px-6 pt-6 pb-2 flex items-center gap-3">
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        </span>
+        <h3 className="text-[22px] font-medium text-white tracking-wide leading-none">
+          Live Updates
+        </h3>
+      </div>
+      <div className="px-6 pb-7 pt-2 text-white space-y-4">
+        {notices.map((notice, idx) => (
+          <a
+            key={idx}
+            href={notice.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[14px] leading-relaxed opacity-95 cursor-pointer hover:opacity-100 transition-opacity group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 block"
+          >
+            <span className="font-medium group-hover:underline">{notice.text}</span>
+            <span className="hidden sm:inline mx-1.5 opacity-60">|</span>
+            <span className="opacity-90 whitespace-nowrap text-xs sm:text-[14px]">{notice.date}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 
-            <p className="text-base sm:text-lg text-gray-700">
-              This onboarding service is perfect for cloud kitchens, cafés, and food businesses. We’ll handle your registration, design, payments, and delivery setup — all in one place.
-            </p>
+  // Compact, highly polished checkout card
+  const renderCheckoutCard = (isMobile = false) => (
+    <div
+      ref={isMobile ? null : checkoutRef}
+      className={`relative rounded-2xl ${isMobile ? 'mx-auto border-t-0 rounded-t-none w-full max-w-sm' : 'border w-full'
+        } shadow-2xl overflow-hidden backdrop-blur-md transition-all duration-300 ${isDarkMode
+          ? 'bg-[#0f172a]/85 border-slate-700/50 shadow-orange-900/10 hover:shadow-orange-900/20'
+          : 'bg-white/95 border-slate-200 shadow-slate-200/50 hover:shadow-slate-200/80'
+        }`}
+    >
+      {/* Subtle top glow line */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-500 z-30" />
 
-            {/* ✅ Highlight Section */}
-            <div className="bg-orange-100 text-orange-900 rounded-lg p-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <div className="flex items-start gap-3">
-                <div className="bg-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  Premium Service
-                </div>
-                <p className="text-sm">
-                  Expert setup, full documentation support & fast-track approval.
-                  <a href="#plans" className="ml-2 underline cursor-pointer hover:text-orange-600">See Onboarding Plans</a>
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-2 text-sm">
-                <div className="flex items-center gap-1">
-                  <span className="font-semibold text-yellow-500">4.8</span> ★
-                  <span className="text-gray-600 hidden sm:inline">(152 reviews)</span>
-                </div>
-                <div className="text-gray-600 sm:border-l sm:border-gray-400 sm:pl-4">
-                  <span className="font-semibold">230+</span> onboarded
-                </div>
-              </div>
-            </div>
-
-            <p className="text-sm text-gray-500">
-              Delivered by <span className="text-orange-600 font-semibold">MagicScale Team</span>
-            </p>
-            <p className="text-sm text-gray-500">Last updated {new Date().toLocaleDateString('en-IN', { month: '2-digit', year: 'numeric' })} • Hindi & English</p>
-
-            {/* Mobile Checkout Bar (Appears after initial content on mobile) */}
-            <div className="md:hidden mt-8" id="plans-mobile">
-              <div className="bg-white text-gray-900 rounded-xl shadow-lg p-5 w-full mx-auto">
-                <img src={swiggyImg} alt="Swiggy setup" className="rounded-md mb-4 w-full object-cover h-40" />
-
-                {/* Plan Selection */}
-                <div className="mb-4">
-                  <h3 className="text-lg font-bold mb-2">Choose Your Plan</h3>
-                  <div className="flex space-x-2">
-                    {Object.keys(plans).map((key) => (
-                      <button
-                        key={key}
-                        onClick={() => {
-                          setSelectedPlan(key);
-                          setDiscountApplied(false);
-                          setCouponCode('');
-                          setAppliedCouponInfo(null);
-                        }}
-                        className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors
-                          ${selectedPlan === key
-                            ? 'bg-orange-600 text-white shadow-md'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
-                      >
-                        {plans[key].name.replace('Swiggy ', '').replace('Onboarding', '')}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price Display */}
-                <h2 className="text-3xl font-bold mb-1">
-                  ₹{finalPrice.toLocaleString()}
-                  {discountApplied && (
-                    <span className="ml-2 text-xl font-normal text-gray-500 line-through">
-                      ₹{currentPlan.price.toLocaleString()}
-                    </span>
-                  )}
-                </h2>
-                {discountApplied && appliedCouponInfo && (
-                  <p className="text-green-600 text-sm mb-3">
-                    {appliedCouponInfo.discount ? `You saved ${appliedCouponInfo.discount}%!` : `You saved ₹${appliedCouponInfo.flatDiscount}!`}
-                  </p>
-                )}
-                <p className="text-sm text-gray-600 mb-3">{currentPlan.tagline}</p>
-
-                <button
-                  onClick={handleCheckout}
-                  className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
-                >
-                  Proceed to Checkout
-                </button>
-
-                <p className="text-xs text-gray-500 text-center mt-2">30-Day Money-Back Guarantee</p>
-
-                <ul className="text-sm mt-5 text-gray-700 space-y-2">
-                  {currentPlan.features.map((feature, index) => (
-                    <li key={index} className="flex items-center">
-                      <FaCheckCircle className="text-green-500 mr-2 flex-shrink-0" /> {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Coupon Section */}
-                <div className="mt-6">
-                  <label htmlFor="coupon-code-mobile" className="text-sm font-medium text-gray-700 block mb-1">Apply Coupon</label>
-                  <div className="flex">
-                    <input
-                      id="coupon-code-mobile"
-                      type="text"
-                      placeholder="Enter coupon code"
-                      className="flex-grow border px-3 py-2 rounded-l text-sm focus:ring-orange-500 focus:border-orange-500"
-                      value={couponCode}
-                      onChange={(e) => setCouponCode(e.target.value)}
-                      disabled={discountApplied}
-                    />
-                    <button
-                      onClick={handleCouponApply}
-                      disabled={discountApplied || couponCode.trim() === ''}
-                      className={`px-4 py-2 rounded-r text-sm font-semibold transition-colors ${
-                        discountApplied || couponCode.trim() === ''
-                          ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                          : 'bg-green-600 hover:bg-green-700 text-white'
-                      }`}
-                    >
-                      {discountApplied ? 'Applied' : 'Apply'}
-                    </button>
-                  </div>
-                  {discountApplied && appliedCouponInfo ? (
-                    <div className="flex justify-between items-center text-green-600 text-xs mt-1">
-                      <span>Coupon "{appliedCouponInfo.code}" applied!</span>
-                      <button onClick={handleRemoveCoupon} className="text-red-500 hover:underline">Remove</button>
-                    </div>
-                  ) : (
-                    couponCode.trim() === '' && (
-                      <p className="text-gray-500 text-xs mt-1">
-                        Enter a coupon code or select from below.
-                      </p>
-                    )
-                  )}
-
-                  {/* Coupon Options */}
-                  {!discountApplied && (
-                    <div className="mt-4 border-t border-gray-200 pt-4">
-                      <h4 className="text-md font-semibold mb-2">Available Coupons:</h4>
-                      <div className="space-y-2">
-                        {availableCoupons.map((coupon, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition"
-                            onClick={() => handleCouponSelect(coupon)}
-                          >
-                            <div className="flex items-center">
-                              <FaTag className="text-orange-500 mr-2" />
-                              <div>
-                                <p className="font-semibold text-sm">{coupon.code}</p>
-                                <p className="text-xs text-gray-600">{coupon.description}</p>
-                              </div>
-                            </div>
-                            <button
-                              onClick={(e) => { e.stopPropagation(); handleCouponSelect(coupon); }} // Prevent click on parent div from triggering again
-                              className="text-orange-600 hover:text-orange-800 text-sm font-medium"
-                            >
-                              Apply
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <DocumentsRequired />
-              <SwiggyWhatYouGet />
-              <h3 className="text-2xl font-semibold mb-6">More reasons to onboard</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[{
-                  icon: <FaTv className="mx-auto text-3xl mb-3 text-orange-500" />,
-                  title: "Live Dashboard Access",
-                  desc: "Track orders, payments, and delivery status directly from your dashboard."
-                },
-                {
-                  icon: <FaDownload className="mx-auto text-3xl mb-3 text-pink-500" />,
-                  title: "Menu Download Setup",
-                  desc: "Enable downloadable menu for WhatsApp or printing."
-                },
-                {
-                  icon: <FaSatelliteDish className="mx-auto text-3xl mb-3 text-red-500" />,
-                  title: "Nationwide Coverage",
-                  desc: "We assist across India — metros, tier 2 cities, and remote areas."
-                },
-                {
-                  icon: <FaSmile className="mx-auto text-3xl mb-3 text-pink-400" />,
-                  title: "Multi-Outlet Support",
-                  desc: "Easily onboard multiple branches or cloud kitchens."
-                }].map((item, idx) => (
-                  <div key={idx} className="bg-white rounded-xl p-5 text-center shadow">
-                    {item.icon}
-                    <h4 className="text-lg font-bold mb-1">{item.title}</h4>
-                    <p className="text-sm text-gray-600">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <SwiggyFAQ />
-          </div>
-
-          {/* ✅ Right Sticky Checkout (Desktop) */}
-          {/* Added max-h-[calc(100vh-theme(space.20))] and overflow-y-auto */}
-          <div className="hidden md:block md:w-[34%]">
-            <div className="sticky top-20 max-h-[calc(100vh-theme(space.20))] overflow-y-auto" id="plans-desktop">
-              <div className="bg-white text-gray-900 rounded-xl shadow-lg p-5 w-full max-w-sm ml-auto">
-                <img src={swiggyImg} alt="Swiggy setup" className="rounded-md mb-4 w-full object-cover h-40" />
-
-                {/* Plan Selection */}
-                <div className="mb-4">
-                  <h3 className="text-lg font-bold mb-2">Choose Your Plan</h3>
-                  <div className="flex space-x-2">
-                    {Object.keys(plans).map((key) => (
-                      <button
-                        key={key}
-                        onClick={() => {
-                          setSelectedPlan(key);
-                          setDiscountApplied(false);
-                          setCouponCode('');
-                          setAppliedCouponInfo(null);
-                        }}
-                        className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors
-                          ${selectedPlan === key
-                            ? 'bg-orange-600 text-white shadow-md'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
-                      >
-                        {plans[key].name.replace('Swiggy ', '').replace('Onboarding', '')}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price Display */}
-                <h2 className="text-3xl font-bold mb-1">
-                  ₹{finalPrice.toLocaleString()}
-                  {discountApplied && (
-                    <span className="ml-2 text-xl font-normal text-gray-500 line-through">
-                      ₹{currentPlan.price.toLocaleString()}
-                    </span>
-                  )}
-                </h2>
-                {discountApplied && appliedCouponInfo && (
-                  <p className="text-green-600 text-sm mb-3">
-                    {appliedCouponInfo.discount ? `You saved ${appliedCouponInfo.discount}%!` : `You saved ₹${appliedCouponInfo.flatDiscount}!`}
-                  </p>
-                )}
-                <p className="text-sm text-gray-600 mb-3">{currentPlan.tagline}</p>
-
-                <button
-                  onClick={handleCheckout}
-                  className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
-                >
-                  Proceed to Checkout
-                </button>
-
-                <p className="text-xs text-gray-500 text-center mt-2">30-Day Money-Back Guarantee</p>
-
-                <ul className="text-sm mt-5 text-gray-700 space-y-2">
-                  {currentPlan.features.map((feature, index) => (
-                    <li key={index} className="flex items-center">
-                      <FaCheckCircle className="text-green-500 mr-2 flex-shrink-0" /> {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Coupon Section */}
-                <div className="mt-6">
-                  <label htmlFor="coupon-code-desktop" className="text-sm font-medium text-gray-700 block mb-1">Apply Coupon</label>
-                  <div className="flex">
-                    <input
-                      id="coupon-code-desktop"
-                      type="text"
-                      placeholder="Enter coupon code"
-                      className="flex-grow border px-3 py-2 rounded-l text-sm focus:ring-orange-500 focus:border-orange-500"
-                      value={couponCode}
-                      onChange={(e) => setCouponCode(e.target.value)}
-                      disabled={discountApplied}
-                    />
-                    <button
-                      onClick={handleCouponApply}
-                      disabled={discountApplied || couponCode.trim() === ''}
-                      className={`px-4 py-2 rounded-r text-sm font-semibold transition-colors ${
-                        discountApplied || couponCode.trim() === ''
-                          ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                          : 'bg-green-600 hover:bg-green-700 text-white'
-                      }`}
-                    >
-                      {discountApplied ? 'Applied' : 'Apply'}
-                    </button>
-                  </div>
-                  {discountApplied && appliedCouponInfo ? (
-                    <div className="flex justify-between items-center text-green-600 text-xs mt-1">
-                      <span>Coupon "{appliedCouponInfo.code}" applied!</span>
-                      <button onClick={handleRemoveCoupon} className="text-red-500 hover:underline">Remove</button>
-                    </div>
-                  ) : (
-                    couponCode.trim() === '' && (
-                      <p className="text-gray-500 text-xs mt-1">
-                        Enter a coupon code or select from below.
-                      </p>
-                    )
-                  )}
-
-                  {/* Coupon Options */}
-                  {!discountApplied && (
-                    <div className="mt-4 border-t border-gray-200 pt-4">
-                      <h4 className="text-md font-semibold mb-2">Available Coupons:</h4>
-                      <div className="space-y-2">
-                        {availableCoupons.map((coupon, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition"
-                            onClick={() => handleCouponSelect(coupon)}
-                          >
-                            <div className="flex items-center">
-                              <FaTag className="text-orange-500 mr-2" />
-                              <div>
-                                <p className="font-semibold text-sm">{coupon.code}</p>
-                                <p className="text-xs text-gray-600">{coupon.description}</p>
-                              </div>
-                            </div>
-                            <button
-                              onClick={(e) => { e.stopPropagation(); handleCouponSelect(coupon); }} // Prevent click on parent div from triggering again
-                              className="text-orange-600 hover:text-orange-800 text-sm font-medium"
-                            >
-                              Apply
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+      {/* Condensed Image Header - Slimmer for better fit */}
+      <div className="relative h-24 sm:h-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/20 to-transparent z-10" />
+        <img
+          src={swiggyImg}
+          alt="Swiggy setup"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 sepia-[.2] hue-rotate-[-30deg]"
+        />
+        <div className="absolute bottom-3 left-4 z-20">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+            <Star size={10} className="text-yellow-400 fill-yellow-400" />
+            Swiggy Expert Setup
           </div>
         </div>
       </div>
 
-      {/* ✅ Mobile Floating Summary Bar (Always at bottom on mobile) */}
-      <div className="fixed md:hidden bottom-0 left-0 right-0 bg-white shadow-inner px-4 py-3 z-50 border-t flex items-center justify-between">
-        <div>
-          <h4 className="text-lg font-semibold">
-            ₹{finalPrice.toLocaleString()}
+      <div className="p-4 sm:p-5">
+
+        {/* Dynamic Pricing Inside the Box Details */}
+        <div className="mb-3">
+          <div className="flex items-baseline gap-2">
+            <h2 className={`text-2xl sm:text-3xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`} id="plans">
+              ₹{finalPrice.toLocaleString()}
+            </h2>
             {discountApplied && (
-              <span className="ml-2 text-sm font-normal text-gray-500 line-through">
+              <span className={`text-sm sm:text-base font-bold line-through ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
                 ₹{currentPlan.price.toLocaleString()}
               </span>
             )}
-          </h4>
-          <p className="text-xs text-gray-600 truncate max-w-[180px]">{currentPlan.name}</p>
+          </div>
+          {discountApplied && appliedCouponInfo && (
+            <p className="text-emerald-500 font-bold text-[10px] sm:text-[11px] mb-1">
+              {appliedCouponInfo.discount ? `Save ${appliedCouponInfo.discount}%` : `Save ₹${appliedCouponInfo.flatDiscount}`} with {appliedCouponInfo.code}!
+            </p>
+          )}
+          <p className={`text-xs mt-1 ${isDarkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed font-medium line-clamp-2`}>
+            {currentPlan.description}
+          </p>
         </div>
+
+        {/* Plan Selector Bar - Compact */}
+        <div className={`p-1 rounded-lg mb-4 flex gap-1 ${isDarkMode ? 'bg-[#1e293b]/80 border border-slate-700/50' : 'bg-slate-100 border border-slate-200/50'}`}>
+          {Object.keys(plans).map((key) => (
+            <button
+              key={key}
+              onClick={() => {
+                setSelectedPlan(key);
+                handleRemoveCoupon();
+              }}
+              className={`flex-1 py-2 px-1 text-center text-[11px] sm:text-xs font-bold rounded-lg transition-all duration-300 uppercase tracking-wide
+              ${selectedPlan === key
+                  ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md transform scale-[1.02]'
+                  : `${isDarkMode ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50' : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'}`
+                }`}
+            >
+              {plans[key].name}
+            </button>
+          ))}
+        </div>
+
+        <ul className="space-y-2 mb-5">
+          {currentPlan.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start gap-2">
+              <CheckCircle2 size={14} className="text-orange-500 shrink-0 mt-0.5" />
+              <span className={`text-xs font-medium leading-tight ${isDarkMode ? 'text-slate-200' : 'text-slate-700'}`}>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
         <button
           onClick={handleCheckout}
-          className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm hover:bg-orange-700"
+          className="w-full flex items-center justify-center gap-1.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white py-2 sm:py-2.5 rounded-lg text-[13px] font-bold shadow-md shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300"
         >
-          Continue
+          Proceed to Checkout
+          <ChevronRight size={14} />
+        </button>
+
+        <div className="mt-3 flex items-center justify-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+          <ShieldCheck size={12} className={isDarkMode ? 'text-slate-400' : 'text-slate-500'} />
+          <p className={`text-[10px] font-semibold tracking-wide uppercase ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+            30-Day Money-Back Guarantee
+          </p>
+        </div>
+
+        {/* Coupon - Built-in functionality */}
+        <div className={`mt-4 pt-4 border-t ${isDarkMode ? 'border-slate-700/50' : 'border-slate-200'}`}>
+          <label htmlFor={`coupon-input-${isMobile ? 'm' : 'd'}`} className={`text-[10px] font-bold uppercase tracking-widest block mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+            Have a Coupon?
+          </label>
+          <div className="flex gap-2">
+            <input
+              id={`coupon-input-${isMobile ? 'm' : 'd'}`}
+              type="text"
+              placeholder="Enter code"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+              disabled={discountApplied}
+              className={`flex-1 min-w-0 border px-3 py-2 rounded-lg text-xs font-bold transition-colors shadow-inner uppercase ${isDarkMode
+                ? 'bg-[#0b101d] border-slate-700 text-white placeholder-slate-500 focus:border-orange-500 outline-none disabled:opacity-50'
+                : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-orange-500 outline-none disabled:opacity-50'
+                }`}
+            />
+            {discountApplied ? (
+              <button onClick={handleRemoveCoupon} className={`px-3 py-2 rounded-lg text-xs font-bold transition-colors shadow-sm bg-red-500/10 text-red-500 hover:bg-red-500/20`}>
+                Remove
+              </button>
+            ) : (
+              <button onClick={handleCouponApply} className={`px-4 py-2 rounded-lg text-xs font-bold transition-colors shadow-sm ${isDarkMode ? 'bg-orange-600 text-white hover:bg-orange-500' : 'bg-orange-600 text-white hover:bg-orange-700'
+                }`}>
+                Apply
+              </button>
+            )}
+          </div>
+
+          {/* Available Coupons List */}
+          {!discountApplied && (
+            <div className="mt-3 space-y-1.5 max-h-24 overflow-y-auto pr-1">
+              {availableCoupons.map((coupon, idx) => (
+                <div key={idx} onClick={() => handleCouponSelect(coupon)} className={`group flex items-center justify-between py-1.5 px-2.5 rounded-md border cursor-pointer transition-all ${isDarkMode ? 'bg-[#0f172a]/50 border-slate-700 hover:border-orange-500/50' : 'bg-slate-50 border-slate-200 hover:border-orange-300 hover:shadow-sm'
+                  }`}>
+                  <div className="flex items-center gap-2 overflow-hidden">
+                    <FaTag className="text-orange-500 shrink-0 text-xs opacity-80 group-hover:opacity-100 transition-opacity" />
+                    <div className="min-w-0">
+                      <p className={`text-[10px] font-black tracking-wide uppercase truncate ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>{coupon.code}</p>
+                      <p className={`text-[9px] font-medium leading-none mt-0.5 truncate ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>{coupon.description}</p>
+                    </div>
+                  </div>
+                  <button className="text-[9px] font-bold text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wider pl-2 shrink-0">Apply</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={`min-h-screen font-[Poppins] selection:bg-orange-500/30 overflow-x-hidden ${isDarkMode ? 'bg-[#04070d] text-slate-200' : 'bg-[#fcfdfd] text-slate-800'
+      }`}>
+
+      {/* Decorative Swiggy-Themed Background Elements - More Polished */}
+      <div className="absolute top-0 inset-x-0 h-[600px] overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-orange-600/10 dark:bg-orange-600/5 blur-[120px] rounded-full mix-blend-screen" />
+        <div className="absolute top-20 -left-20 w-[500px] h-[500px] bg-amber-500/10 dark:bg-amber-500/5 blur-[120px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#04070d] dark:from-[#04070d] to-transparent dark:block hidden" />
+        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#fcfdfd] to-transparent block dark:hidden" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-24 pb-20 lg:pt-32 lg:pb-28">
+
+        {/* Adjusted spacing and layout for ultra polished feel */}
+        <div ref={mainContentRef} className="flex flex-col lg:flex-row gap-10 lg:gap-12 xl:gap-16 items-start">
+
+          {/* Left Section - Main Content */}
+          <div className="w-full lg:w-[60%] xl:w-[62%]">
+
+            {/* Breadcrumb Navigation - fixed to correctly navigate to /services */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold mb-6 uppercase tracking-wider">
+              <span onClick={() => navigate('/services')} className="text-orange-500 hover:text-orange-600 cursor-pointer transition-colors">Services</span>
+              <ChevronRight size={14} className={isDarkMode ? 'text-slate-600' : 'text-slate-400'} />
+              <span className={isDarkMode ? 'text-slate-400' : 'text-slate-500'}>Swiggy Onboarding</span>
+            </div>
+
+            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] mb-6 ${isDarkMode ? 'text-white' : 'text-slate-900'
+              }`}>
+              Swiggy Onboarding & <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 drop-shadow-sm pb-2 inline-block">Restaurant Launch A–Z</span>
+            </h1>
+
+            <p className={`text-lg sm:text-xl font-medium leading-relaxed mb-8 max-w-2xl ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+              The perfect onboarding blueprint for cloud kitchens, cafés, and modern food businesses. We handle registration, professional menu setup, and optimization all in one place.
+            </p>
+
+            {/* Highlight Bar - Extra Polished */}
+            <div className={`rounded-2xl p-5 sm:p-6 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border backdrop-blur-md transition-shadow hover:shadow-lg ${isDarkMode
+              ? 'bg-[#0f172a]/70 border-slate-700/50 hover:shadow-orange-900/5'
+              : 'bg-white border-slate-200/80 hover:border-orange-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]'
+              }`}>
+              <div className="flex items-start gap-4">
+                <div className="bg-gradient-to-br from-orange-500 to-amber-500 text-white text-[10px] sm:text-xs font-black px-3 py-1.5 rounded border border-orange-400/20 shadow-sm uppercase tracking-widest mt-1 sm:mt-0">
+                  Premium
+                </div>
+                <div>
+                  <p className={`text-sm sm:text-base font-semibold leading-relaxed ${isDarkMode ? 'text-slate-200' : 'text-slate-800'}`}>
+                    Fast-track Swiggy approval with guaranteed expert review.
+                    <button onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })} className="ml-2 text-orange-500 font-bold hover:text-orange-600 transition-colors inline-flex items-center mt-1 sm:mt-0">
+                      View Plans <ChevronRight size={14} className="ml-0.5" />
+                    </button>
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-6 shrink-0 border-t sm:border-t-0 sm:border-l pt-4 sm:pt-0 sm:pl-6 w-full sm:w-auto border-slate-200 dark:border-slate-700">
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-1.5">
+                    <span className={`text-xl font-black ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>4.8</span>
+                    <Star size={16} className="text-yellow-400 fill-yellow-400" />
+                  </div>
+                  <span className={`text-[10px] font-bold uppercase tracking-widest ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>152 reviews</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className={`text-xl font-black ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>230+</span>
+                  <span className={`text-[10px] font-bold uppercase tracking-widest ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>Onboarded</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Checkout Card & Notice Placement */}
+            <div className="w-full lg:hidden mb-12">
+              {renderCheckoutCard(true)}
+              {renderLiveNotice(true)}
+            </div>
+
+            {/* Main Content Details */}
+            <div className="space-y-16 lg:space-y-20">
+
+              <DocumentsRequired />
+
+              <SwiggyWhatYouGet />
+
+              {/* Reasons Grid */}
+              <div className="pt-10 w-full border-t border-slate-200/80 dark:border-slate-800/80">
+                <div className="flex flex-col items-center sm:items-start mb-10 text-center sm:text-left">
+                  <h3 className={`text-2xl sm:text-3xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                    More reasons to onboard
+                  </h3>
+                  <p className={`mt-3 font-medium text-sm sm:text-base ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>Why partnering with MagicScale is the right choice for Swiggy.</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                  {[
+                    {
+                      icon: <FaTv className="text-orange-500 text-xl" />,
+                      title: 'Live Dashboard',
+                      desc: 'Track orders, payments, and delivery status directly.',
+                      color: 'bg-orange-500/10'
+                    },
+                    {
+                      icon: <FaDownload className="text-amber-500 text-xl" />,
+                      title: 'Menu Downloads',
+                      desc: 'Enable downloadable menus for WhatsApp sharing.',
+                      color: 'bg-amber-500/10'
+                    },
+                    {
+                      icon: <FaSatelliteDish className="text-yellow-500 text-xl" />,
+                      title: 'Nationwide Reach',
+                      desc: 'Assistance across metros, tier 2 cities, and remote areas.',
+                      color: 'bg-yellow-500/10'
+                    },
+                    {
+                      icon: <FaSmile className="text-orange-400 text-xl" />,
+                      title: 'Multi-Outlet Support',
+                      desc: 'Seamlessly onboard multiple branches or kitchens.',
+                      color: 'bg-orange-400/10'
+                    },
+                  ].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className={`group rounded-2xl p-6 sm:p-8 border transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl w-full ${isDarkMode
+                        ? 'bg-[#0f172a]/40 border-slate-700/50 hover:bg-[#0f172a]/80 hover:border-orange-500/30 hover:shadow-orange-900/10'
+                        : 'bg-white border-slate-200/80 hover:shadow-slate-200/80 hover:border-orange-200'
+                        }`}
+                    >
+                      <div className={`w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 shadow-sm`}>
+                        {item.icon}
+                      </div>
+                      <h4 className={`text-lg font-bold mb-2.5 tracking-wide ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>{item.title}</h4>
+                      <p className={`text-sm font-medium leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-10 lg:hidden">
+                <SwiggyFAQ />
+              </div>
+
+            </div>
+          </div>
+
+          {/* Right: Sticky Checkout Bar (Desktop Only) */}
+          <div className="hidden lg:block lg:w-[40%] xl:w-[38%] relative">
+            {/* The sticky container */}
+            <div className="sticky top-28 xl:top-32 transition-transform duration-700 ease-out flex flex-col justify-start">
+              {renderCheckoutCard()}
+              {renderLiveNotice()}
+              <div className="mt-8 w-full">
+                <SwiggyFAQ />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <SiteFooter />
+
+      {/* Floating Bottom Bar CTA for Mobile */}
+      <div className={`fixed bottom-0 left-0 right-0 p-4 lg:hidden z-50 border-t backdrop-blur-xl transition-all duration-300 ${isDarkMode ? 'bg-[#0b101d]/90 border-slate-800' : 'bg-white/95 border-slate-200 shadow-[0_-4px_25px_-4px_rgba(0,0,0,0.1)]'
+        }`}>
+        <button
+          onClick={handleCheckout}
+          className="w-full bg-gradient-to-r from-orange-600 to-amber-600 text-white py-3.5 rounded-xl text-sm font-bold shadow-lg shadow-orange-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+        >
+          Get Started Now <span className="opacity-80 mx-1">•</span> ₹{finalPrice.toLocaleString()}
+          <ChevronRight size={18} />
         </button>
       </div>
     </div>

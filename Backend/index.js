@@ -14,6 +14,9 @@ import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import cashfreeRoutes from "./routes/cashfreeRoutes.js";
 import paymentRoutes from "./routes/payment.js";
 import downloadRoutes from "./routes/downloadRoutes.js";
+import careerRoutes from "./routes/careerRoutes.js";
+import jobRoutes from "./routes/jobRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
 
 // Load env vars
 dotenv.config();
@@ -26,7 +29,12 @@ const __dirname = path.resolve();
 app.set("trust proxy", 1);
 
 // Allowed frontend origins
-const allowedOrigins = ["http://localhost:5173", "https://magicscale.in"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5175",
+  "https://magicscale.in",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -56,6 +64,9 @@ app.use("/api", subscriptionRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/cashfree", cashfreeRoutes);
 app.use("/api/success", paymentRoutes);
+app.use("/api/careers", careerRoutes);
+app.use("/api/jobs", jobRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // MongoDB connection and start server
 mongoose.connect(process.env.MONGO_URI, {

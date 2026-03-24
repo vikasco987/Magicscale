@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 // Accept isDarkMode as a prop
-const ZomatoFAQ = ({ isDarkMode }) => {
+const ZomatoFAQ = () => {
+  const { isDarkMode } = useTheme();
   return (
     <div
       // Main container background and text color

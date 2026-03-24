@@ -17,7 +17,7 @@ const Signup = () => {
     try {
 
       //VITE_BACKEND_URL=https://magicscale-backend.onrender.com
-      const res = await fetch('https://magicscale-backend.onrender.com/api/auth/register', {
+      const res = await fetch('http://localhost:5001/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
@@ -38,46 +38,46 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-white relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-white dark:from-slate-900 dark:to-slate-950 relative transition-colors duration-500">
       {/* Background shape */}
-      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-purple-200 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-purple-200 dark:bg-purple-900 rounded-full blur-3xl opacity-50 dark:opacity-20 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
 
-      <div className="relative z-10 w-full max-w-md bg-white p-10 rounded-xl shadow-xl">
-        <h2 className="text-3xl font-bold text-center text-blue-800 mb-6">Sign Up</h2>
+      <div className="relative z-10 w-[90%] sm:w-full max-w-md bg-white dark:bg-gray-900 p-6 sm:p-10 rounded-xl shadow-xl dark:shadow-2xl border border-transparent dark:border-gray-800 mx-auto">
+        <h2 className="text-3xl font-bold text-center text-blue-800 dark:text-indigo-400 mb-6">Sign Up</h2>
         <form onSubmit={handleSignup} className="space-y-4">
-          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-gray-50">
-            <FaUser className="mr-3 text-gray-600" />
+          <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+            <FaUser className="mr-3 text-gray-600 dark:text-gray-400" />
             <input
               type="text"
               placeholder="Full Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full bg-transparent outline-none text-gray-800"
+              className="w-full bg-transparent outline-none text-gray-800 dark:text-white"
             />
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-gray-50">
-            <FaEnvelope className="mr-3 text-gray-600" />
+          <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+            <FaEnvelope className="mr-3 text-gray-600 dark:text-gray-400" />
             <input
               type="email"
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full bg-transparent outline-none text-gray-800"
+              className="w-full bg-transparent outline-none text-gray-800 dark:text-white"
             />
           </div>
 
-          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-gray-50">
-            <FaLock className="mr-3 text-gray-600" />
+          <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+            <FaLock className="mr-3 text-gray-600 dark:text-gray-400" />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full bg-transparent outline-none text-gray-800"
+              className="w-full bg-transparent outline-none text-gray-800 dark:text-white"
             />
           </div>
 
@@ -85,15 +85,15 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-700 text-white py-2 rounded-lg hover:bg-blue-800 transition"
+            className="w-full bg-blue-700 dark:bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-800 dark:hover:bg-blue-700 transition"
           >
             Create Account
           </button>
         </form>
 
-        <p className="mt-4 text-sm text-center text-gray-600">
+        <p className="mt-4 text-sm text-center text-gray-600 dark:text-gray-400">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-700 hover:underline">Login</Link>
+          <Link to="/login" className="text-blue-700 dark:text-blue-400 hover:underline">Login</Link>
         </p>
       </div>
     </div>

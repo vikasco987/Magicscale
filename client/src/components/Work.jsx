@@ -36,13 +36,13 @@ const services = [
 
 const Services = () => {
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-white">
+    <div className="min-h-screen flex flex-col md:flex-row bg-white dark:bg-slate-950 transition-colors duration-500">
       {/* Left Sidebar */}
-      <aside className="w-full md:w-1/4 bg-purple-100 p-6">
-        <h3 className="text-xl font-semibold text-purple-700 mb-4">More Services</h3>
-        <ul className="space-y-3 text-purple-600 font-medium">
+      <aside className="w-full md:w-1/4 bg-purple-100 dark:bg-slate-900 p-6 border-r border-purple-200 dark:border-slate-800">
+        <h3 className="text-xl font-semibold text-purple-700 dark:text-indigo-400 mb-4">More Services</h3>
+        <ul className="space-y-3 text-purple-600 dark:text-gray-400 font-medium">
           {services.map((service, i) => (
-            <li key={i} className="hover:text-purple-900 transition">
+            <li key={i} className="hover:text-purple-900 dark:hover:text-white transition cursor-pointer">
               {service.title}
             </li>
           ))}
@@ -50,8 +50,8 @@ const Services = () => {
       </aside>
 
       {/* Right Content */}
-      <main className="w-full md:w-3/4 p-6 md:p-12 bg-[#faf5ff]">
-        <h2 className="text-4xl font-bold text-center mb-10 text-purple-800">
+      <main className="w-full md:w-3/4 p-6 md:p-12 bg-[#faf5ff] dark:bg-slate-900/50">
+        <h2 className="text-4xl font-bold text-center mb-10 text-purple-800 dark:text-white">
           Explore Our <span className="text-pink-500">Full Services</span>
         </h2>
 

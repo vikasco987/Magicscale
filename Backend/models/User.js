@@ -117,6 +117,10 @@ const userSchema = new mongoose.Schema({
   },
 
   // ✅ Optional profile fields
+  phone: {
+    type: String,
+  },
+
   profilePhoto: {
     type: String,
   },

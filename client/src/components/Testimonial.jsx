@@ -26,10 +26,10 @@ const testimonials = [
 
 export default function Testimonial() {
   return (
-    <section id="testimonials" className="relative bg-gradient-to-b from-[#F7F9FF] to-white py-28 px-6 sm:px-10 lg:px-20 overflow-hidden">
+    <section id="testimonials" className="relative bg-gradient-to-b from-[#F7F9FF] to-white dark:from-slate-900 dark:to-slate-950 py-28 px-6 sm:px-10 lg:px-20 overflow-hidden transition-colors duration-500">
       {/* Decorative gradient blob background */}
-      <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-purple-300 opacity-20 blur-[120px] rounded-full z-0"></div>
-      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-indigo-300 opacity-20 blur-[120px] rounded-full z-0"></div>
+      <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-purple-300 opacity-20 blur-[120px] rounded-full z-0 dark:bg-purple-900 dark:opacity-10"></div>
+      <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-indigo-300 opacity-20 blur-[120px] rounded-full z-0 dark:bg-indigo-900 dark:opacity-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <motion.h2
@@ -37,12 +37,12 @@ export default function Testimonial() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-extrabold text-gray-900 mb-4"
+          className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4"
         >
           Loved by Food Entrepreneurs
         </motion.h2>
 
-        <p className="text-md text-gray-600 mb-16 max-w-xl mx-auto">
+        <p className="text-md text-gray-600 dark:text-gray-400 mb-16 max-w-xl mx-auto">
           Here’s what real restaurateurs and foodpreneurs are saying about
           working with MagicScale.
         </p>
@@ -56,20 +56,20 @@ export default function Testimonial() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
               viewport={{ once: true }}
-              className="backdrop-blur-md bg-white/60 border border-purple-100 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="backdrop-blur-md bg-white/60 dark:bg-gray-900/40 border border-purple-100 dark:border-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
-              <p className="text-gray-800 text-sm italic mb-6 leading-relaxed">
+              <p className="text-gray-800 dark:text-gray-200 text-sm italic mb-6 leading-relaxed">
                 “{t.quote}”
               </p>
               <div className="flex items-center gap-4">
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-purple-200"
+                  className="w-12 h-12 rounded-full object-cover border-2 border-purple-200 dark:border-gray-700"
                 />
                 <div className="text-left">
-                  <p className="font-semibold text-gray-900">{t.name}</p>
-                  <p className="text-sm text-gray-500">{t.role}</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{t.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t.role}</p>
                 </div>
               </div>
             </motion.div>

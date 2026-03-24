@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaCheckCircle, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../../../components/context/ThemeContext';
 
 const items = [
   "Full Zomato Registration — PAN, GST, FSSAI setup assistance",
@@ -14,7 +15,8 @@ const items = [
 ];
 
 // Ensure you are accepting the isDarkMode prop here
-const ZomatoWhatYouGet = ({ isDarkMode }) => {
+const ZomatoWhatYouGet = () => {
+  const { isDarkMode } = useTheme();
   const [expanded, setExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const visibleItems = expanded ? items : items.slice(0, 4);

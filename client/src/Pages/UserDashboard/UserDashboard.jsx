@@ -11,33 +11,24 @@ const UserDashboard = () => {
   const closeSidebar = () => setSidebarOpen(false);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen pt-[72px] overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
       {/* ✅ Sidebar */}
-      <div
-        className={`fixed inset-y-0 left-0 z-40 w-64 transition-transform transform bg-white shadow-lg md:static md:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
+      <div className={`fixed top-[72px] bottom-0 right-0 z-50 w-72 transition-transform transform bg-white dark:bg-slate-900 shadow-2xl ${sidebarOpen ? "translate-x-0" : "translate-x-full"}`}>
         <Sidebar closeSidebar={closeSidebar} />
       </div>
 
       {/* ✅ Backdrop for Mobile */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-30 z-30 md:hidden"
+          className="fixed inset-0 bg-black opacity-30 z-30"
           onClick={closeSidebar}
         />
       )}
 
       {/* ✅ Main Content */}
       <div className="flex-1 flex flex-col w-full overflow-auto">
-        {/* ✅ Topbar with Menu Button */}
-        <div className="flex items-center justify-between md:justify-end px-4 py-3 bg-white shadow-sm">
-          <button onClick={toggleSidebar} className="md:hidden text-gray-700">
-            <Menu className="h-6 w-6" />
-          </button>
-          <Topbar />
-        </div>
+        {/* ✅ Topbar */}
+        <Topbar toggleSidebar={toggleSidebar} title="Dashboard" />
 
         {/* ✅ Dashboard Grid */}
         <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

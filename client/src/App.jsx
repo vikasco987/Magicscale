@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom"; // also import Routes
+import { Route, Routes, useLocation } from "react-router-dom";
+import Header from "./components/Header";
 import Home from "./Pages/Home";
 import ReturnPolicy from "./components/ReturnPolicy";
 import "./App.css";
@@ -9,6 +10,7 @@ import HomeWork from "./components/HomeWork";
 import Work from "./components/Work";
 import Terms from "./components/Terms";
 import Checkout from "./Pages/Checkout";
+import ServicesPage from "./Pages/ServicesPage";
 import ZomatoDetails from "./Pages/depthcard/ZomatoDetails";
 import SwiggyDetails from "./Pages/depthcard/SwiggyDetails";
 import FssaiDetails from "./Pages/depthcard/FssaiDetails";
@@ -23,9 +25,20 @@ import ZomatoCoursePage from    './Pages/depthcard/CoursePage/ZomatoCoursePage';
 import UserDashboard from './Pages/UserDashboard/UserDashboard';
 import SellerDashboard from './Pages/SellerDashboard/SellerDashboard';
 import Profile from './Pages/UserDashboard/Profile'; 
+import Orders from './Pages/UserDashboard/Orders';
 import SwiggyOnboardingCourse from "./Pages/depthcard/SwiggyCoursePage/SwiggyCoursePage";
 import FssaiLicenseCourse from "./Pages/depthcard/FssaiCoursePage/FssaiCoursePage";
+import GrowthCoursePage from "./Pages/depthcard/GrowthCoursePage/GrowthCoursePage";
+import GstCoursePage from "./Pages/depthcard/GstCoursePage/GstCoursePage";
+import AboutUsPage from "./Pages/AboutUsPage";
+import BlogsPage from "./Pages/BlogsPage";
+import BlogDetailsPage from "./Pages/BlogDetailsPage";
+import PricingPage from "./Pages/PricingPage";
 import Logout from "./Pages/Logout";
+import CareersPage from "./Pages/CareersPage";
+import JobDetailsPage from "./Pages/JobDetailsPage";
+import KravyCoursePage from "./Pages/depthcard/KravyCoursePage/KravyCoursePage";
+import ComboCoursePage from "./Pages/depthcard/ComboCoursePage/ComboCoursePage";
 
 import Subscriptions from './Pages/UserDashboard/Subscriptions'; 
 
@@ -34,34 +47,71 @@ import Subscriptions from './Pages/UserDashboard/Subscriptions';
 
 // import Services from "./components/work";
 
+import { ThemeProvider } from "./components/context/ThemeContext";
+
 function App() {
   const [count, setCount] = useState(0);
 
+  const location = useLocation();
+
   return (
-    <div>
-      <Routes>
+    <ThemeProvider>
+      <Header />
+      <div>
+        <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<HomeWork />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/course/zomato-onboarding" element={<ZomatoCoursePage />} />
         <Route path="/course/swiggy-onboarding" element={<SwiggyOnboardingCourse />} />
         <Route path="/course/fssai-onboarding" element={<FssaiLicenseCourse />} />
+        <Route path="/course/growth" element={<GrowthCoursePage />} />
+        <Route path="/course/gst" element={<GstCoursePage />} />
+        <Route path="/course/combo-onboarding" element={<ComboCoursePage />} />
+        <Route path="/product/kravy" element={<KravyCoursePage />} />
         <Route path="/services/zomato" element={<ZomatoDetails />} />
         <Route path="/services/swiggy" element={<SwiggyDetails />} />
         <Route path="/services/fssai" element={<FssaiDetails />} />
-        <Route path="/services" element={<Work />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/blogs/:id" element={<BlogDetailsPage />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/careers/:id" element={<JobDetailsPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute allowedRoles={['user', 'admin', 'seller']}>
+              <Profile />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/orders" 
+          element={
+            <ProtectedRoute allowedRoles={['user', 'admin', 'seller']}>
+              <Orders />
+            </ProtectedRoute>
+          } 
+        />
         <Route path="/return-policy" element={<ReturnPolicy />} />
         <Route path="/shipping-policy" element={<ShippingPolicy />} />
         <Route path="/privacy-policy" element={<PrivacyPolicies />} />
         <Route path="/terms-and-condition" element={<Terms />} />
         <Route path="/login-phone" element={<PhoneOTPLogin />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
-         <Route path="/checkout/:id" element={<Checkout />} />
+        <Route 
+          path="/checkout/:id" 
+          element={
+            <ProtectedRoute allowedRoles={['user', 'seller', 'admin']}>
+              <Checkout />
+            </ProtectedRoute>
+          } 
+        />
         
        
         <Route
@@ -90,7 +140,7 @@ function App() {
           <Route
           path="/Subscriptions"
           element={
-            <ProtectedRoute allowedRoles={['user']}>
+            <ProtectedRoute allowedRoles={['user', 'admin', 'seller']}>
               <Subscriptions />
             </ProtectedRoute>
           }
@@ -98,15 +148,15 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute allowedRoles={['user']}>
+            <ProtectedRoute allowedRoles={['user', 'admin', 'seller']}>
               <UserDashboard />
             </ProtectedRoute>
           }
         />
       </Routes>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 
 export default App;
-//hlo yes   hlo g]h

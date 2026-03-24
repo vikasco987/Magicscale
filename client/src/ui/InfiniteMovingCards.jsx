@@ -72,11 +72,11 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li key={idx}>
-            <div className="flex items-center justify-center w-[160px] h-[100px] p-2 bg-white shadow rounded">
+            <div className="flex items-center justify-center w-[160px] h-[100px] p-2 bg-white dark:bg-slate-800 shadow dark:shadow-none rounded transition-colors">
               <img
                 src={item.image}
                 alt={item.title || `client-${idx}`}
-                className="object-contain h-full w-full"
+                className="object-contain h-full w-full dark:brightness-90"
               />
             </div>
           </li>
