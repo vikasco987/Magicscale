@@ -41,7 +41,7 @@ const returnPolicy = [
       Vishal Kushwaha
        1. <b>Email</b> : support@magicscale.in </br>
        2. <b>Phone</b> : +91 8826073117 </br>
-       3. <b>Address</b> : H.No 72, Navyug Public School, Rajokari, New Delhi - 110038
+       3. <b>Address</b> : 3rd Floor, Plot in Mustatil No-14, Killa NO - 12/2, 19/1, 20, Village Samalka, New Delhi 110037
     `,
   },
 ];

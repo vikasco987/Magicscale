@@ -5,10 +5,10 @@ export const companyDetails = {
   address: {
     country: "INDIA",
     label: "Head Office",
-    line1: "599, 3rd Floor, opp. chandra Garden Nar Grand",
-    line2: "West End Greens, Rajokri, New Delhi 110038",
-    fullAddress: "599, 3rd Floor, opp. chandra Garden Nar Grand, West End Greens, Rajokri, Delhi, New Delhi, Delhi 110038",
-    mapLink: "https://maps.app.goo.gl/xLejFDqLj6VtQrqp9"
+    line1: "3rd Floor, Plot in Mustatil No-14",
+    line2: "Killa NO - 12/2, 19/1, 20, Village Samalka, New Delhi 110037",
+    fullAddress: "3rd Floor, Plot in Mustatil No-14, Killa NO - 12/2, 19/1, 20, Village Samalka, New Delhi 110037",
+    mapLink: "https://www.google.com/maps/search/?api=1&query=Plot+in+Mustatil+No-14+Killa+NO+12/2+19/1+20+Village+Samalka+New+Delhi+110037"
   },
   phone: {
     primary: "+91 93113 30885",

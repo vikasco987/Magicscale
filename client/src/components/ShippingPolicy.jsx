@@ -36,7 +36,7 @@ const data = [
       If you have any questions or concerns regarding service delivery, please reach out to us:<br>
       - <b>Email:</b> support@magicscale.in<br>
       - <b>Phone:</b> +91 8826073117<br>
-      - <b>Address:</b> H.No 72, Navyug Public School, Rajokari, New Delhi - 110038
+      - <b>Address:</b> 3rd Floor, Plot in Mustatil No-14, Killa NO - 12/2, 19/1, 20, Village Samalka, New Delhi 110037
     `,
   },
 ];
